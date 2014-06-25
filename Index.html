@@ -1,0 +1,45 @@
+<!doctype html>
+<html ng-app="customersApp">
+  <head>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"></script>-->
+  </head>
+<body>
+    <div>
+      <label>Name:</label>
+      <input type="text" ng-model="yourName" placeholder="Enter a name here">
+      <hr>
+      <h1>Hello {{yourName}}!</h1>
+    </div>
+
+    <div ng-controller="CustomersController">
+      Search: <input type="text" ng-model="searchText" />
+      {{ searchText }}
+      <br />
+      <h3>Customers</h3>
+      <table>
+        <tr ng-repeat="cust in customers | filter:searchText">
+          <td>{{ cust.name }}</td>
+          <td>{{ cust.total | currency}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <script src="js/lib/angular.js"></script>
+    <script src="js/lib/angular-route.js"></script>
+    <script src="js/lib/angular-animate.js"></script>
+    <script>
+      var app = angular.module('customersApp', []);
+      app.controller('CustomersController', function($scope) {
+        $scope.customers = [
+          {"id": 1, "name": "Ted", "total": 5.996},
+          {"id": 2, "name": "Michelle", "total": 10.994},
+          {"id": 3, "name": "Zed", "total": 10.99},
+          {"id": 4, "name": "Tina", "total": 15.994}
+        ];
+      });
+
+
+    </script>
+
+  </body>
+</html>
