@@ -5,13 +5,14 @@
   </head>
 <body>
     <div>
-      <label>Name:</label>
+      <label>PostIt:</label>
       <input type="text" ng-model="PostIt" placeholder="Enter your PostIt Note">
       <hr>
       <!-- The PostIt message you're currently entering! -->
       <h1>Your message is: {{PostIt}}!</h1>
     </div>
 
+    <!--
     <div ng-controller="CustomersController">
       Search: <input type="text" ng-model="searchText" />
       {{ searchText }}
@@ -24,10 +25,13 @@
         </tr>
       </table>
     </div>
+    -->
 
     <script src="js/lib/angular.js"></script>
     <script src="js/lib/angular-route.js"></script>
     <script src="js/lib/angular-animate.js"></script>
+
+    <!--
     <script>
       var app = angular.module('customersApp', []);
       app.controller('CustomersController', function($scope) {
@@ -38,9 +42,8 @@
           {"id": 4, "name": "Tina", "total": 15.994}
         ];
       });
-
-
     </script>
+  -->
 
   </body>
 </html>
