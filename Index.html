@@ -51,14 +51,14 @@
           "hyCoAnJjoajhcntTKrzmnBPJaxKCiw45"
       );
 
-      //var item = { text: "This is where the message goes TESTING" };
-      //client.getTable("Item").insert(item);
+      var item = { text: "1: This is Static" };
+      client.getTable("Item").insert(item);
 
       function addItem(postItText)
       {
-          var item = { text: "This is where the message goes TESTING" };
-          client.getTable("Item").insert(item);
-          client.getTable("Item").insert(portItText);
+          var item2 = { text: "2: This is the button" };
+          client.getTable("Item").insert(item2);
+          client.getTable("Item").insert(postItText);
       }
 
 
