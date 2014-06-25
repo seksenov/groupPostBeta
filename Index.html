@@ -8,7 +8,8 @@
     <div>
       <label>PostIt:</label>
       <input type="text" ng-model="PostIt" placeholder="Enter your PostIt Note">
-      <button type="button" onClick=addItem("Hello World")>Post!</button>
+      <button type="button" onClick="addItem('Hello World');">Post!</button>
+      <input id="clickMe" type="button" value="clickme" onclick="addItem();" />
       <hr>
       <!-- The PostIt message you're currently entering! -->
       <h1>Your PostIt message is: {{ PostIt }}</h1> 
