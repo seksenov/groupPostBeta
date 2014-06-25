@@ -8,7 +8,7 @@
     <div>
       <label>PostIt:</label>
       <input type="text" ng-model="PostIt" placeholder="Enter your PostIt Note">
-      <button type="button">Post!</button>
+      <button type="button" onClick=addItem("Hello World")>Post!</button>
       <hr>
       <!-- The PostIt message you're currently entering! -->
       <h1>Your PostIt message is: {{ PostIt }}</h1> 
@@ -51,8 +51,15 @@
           "hyCoAnJjoajhcntTKrzmnBPJaxKCiw45"
       );
 
-      var item = { text: "This is where the message goes TESTING" };
-      client.getTable("Item").insert(item);
+      //var item = { text: "This is where the message goes TESTING" };
+      //client.getTable("Item").insert(item);
+
+      function addItem(postItText)
+      {
+          client.getTable("Item").insert(portItText);
+      }
+
+
     </script>
   
 
