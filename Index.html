@@ -7,7 +7,7 @@
 <body>
     <div ng-controller="ContactController">
       <label>PostIt:</label>
-      <input type="text" ng-model="PostIt" placeholder="Enter your PostIt Note">
+      <!--<input type="text" ng-model="PostIt" placeholder="Enter your PostIt Note">-->
       <button type="button" onClick="addItem();">Post!</button>
       <button ng-click="add()">ng-Post!</button>
       <!--<input id="clickMe" type="button" value="clickme" onclick="addItemTest();" />-->
@@ -52,11 +52,11 @@
       });
       */
 
-      //function ContactController($scope) {
-       // $scope.add = function() {
+      function ContactController($scope) {
+       //$scope.add = function() {
         //client.getTable("Item").insert($scope.PostIt);
-       // }
-      //}
+       }
+      }
       
       var client = new WindowsAzure.MobileServiceClient(
           "https://grouppostbetadb.azure-mobile.net/",
