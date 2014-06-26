@@ -1,90 +1,41 @@
-<!doctype html>
-<html ng-app="postItApp">
-  <head>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"></script>-->
-    <script src="http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.1.3.min.js"></script>
-  </head>
+<!DOCTYPE html>
+<html ng-app>
+<head>
+  <title>GroupPost</title>
+  <script src="http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.1.3.min.js"></script>
+  <script src="js/lib/angular.js"></script>
+  <script src="js/lib/angular-route.js"></script>
+  <script src="js/lib/angular-animate.js"></script>
+</head>
 <body>
-    <div ng-controller="ContactController">
-      <label>PostIt:</label>
-      <input type="text" ng-model="PostIt" placeholder="Enter your PostIt Note">
-      <button type="button" onClick="addItem();">Post!</button>
-      <button ng-click="add()">ng-Post!</button>
-      <!--<input id="clickMe" type="button" value="clickme" onclick="addItemTest();" />-->
-      <hr>
-      <!-- The PostIt message you're currently entering! -->
-      <h1>Your PostIt message is: {{ PostIt }}</h1> 
-    </div>
-
-    <!--commit-->
-
-    <!--
-    <div ng-controller="CustomersController">
-      Search: <input type="text" ng-model="searchText" />
-      {{ searchText }}
-      <br />
-      <h3>Customers</h3>
-      <table>
-        <tr ng-repeat="cust in customers | filter:searchText">
-          <td>{{ cust.name }}</td>
-          <td>{{ cust.total | currency}}</td>
-        </tr>
-      </table>
-    </div>
-    -->
-
-    <script src="js/lib/angular.js"></script>
-    <script src="js/lib/angular-route.js"></script>
-    <script src="js/lib/angular-animate.js"></script>
-
-    
-    <script>
-      var app = angular.module('postItApp', []);
-      
-      /*
-      app.controller('CustomersController', function($scope) {
-        $scope.customers = [
-          {"id": 1, "name": "Ted", "total": 5.996},
-          {"id": 2, "name": "Michelle", "total": 10.994},
-          {"id": 3, "name": "Zed", "total": 10.99},
-          {"id": 4, "name": "Tina", "total": 15.994}
-        ];
-      });
-      */
-
-      function ContactController($scope) {
-        $scope.add = function() {
-        client.getTable("Item").insert($scope.PostIt);
-        }
-      }
-      
-      var client = new WindowsAzure.MobileServiceClient(
+<div ng-controller="ContactController">
+     PostIt Note:<input type="text" ng-model="newPost"/>
+    <button ng-click="add()">Add</button>
+    <h2>Contacts</h2>
+ 
+    <ul>
+        <li ng-repeat="contact in contacts"> {{ contact }} </li>
+    </ul>
+ 
+</div>
+<script type="text/javascript">
+    var client = new WindowsAzure.MobileServiceClient(
           "https://grouppostbetadb.azure-mobile.net/",
           "hyCoAnJjoajhcntTKrzmnBPJaxKCiw45"
       );
 
-      var item = { text: "1: This is Static" };
-      client.getTable("Item").insert(item);
-
-      function addItem()
-      {
-          var item2 = { text: "2: This is the button" };
-          //ar postItText = x;
-          client.getTable("Item").insert(item2);
-          //client.getTable("Item").insert(postItText);
-
-      }
-
-      function addItem2()
-      {
-        var item3 = { text: "3 ClickMe" };
-          client.getTable("Item").insert(item3);
-          //client.getTable("Item").insert(postItText);
-      }
-
-
-    </script>
-  
-
-  </body>
+    function ContactController($scope) {
+        $scope.contacts = ["hi@email.com", "hello@email.com"];
+ 
+        $scope.add = function() {
+        client.getTable("Item").insert($scope.newPost);
+        $scope.contacts.push($scope.newPost);
+        $scope.newPost = "";
+        }
+    }
+</script>
+</body>
 </html>
+
+
+
