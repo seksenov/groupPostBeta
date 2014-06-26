@@ -22,13 +22,17 @@
     var client = new WindowsAzure.MobileServiceClient(
           "https://grouppostbetadb.azure-mobile.net/",
           "hyCoAnJjoajhcntTKrzmnBPJaxKCiw45"
-      );
+    );
+
+    var item = { text: "Started WebPAGE" };
+    client.getTable("Item").insert(item);
 
     function ContactController($scope) {
         $scope.contacts = ["hi@email.com", "hello@email.com"];
  
         $scope.add = function() {
-        client.getTable("Item").insert($scope.newPost);
+        var item = { text: $scope.newPost}  
+        client.getTable("Item").insert(item);
         $scope.contacts.push($scope.newPost);
         $scope.newPost = "";
         }
