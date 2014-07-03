@@ -43,7 +43,7 @@
           var postMessage = document.getElementById("someInput").value;
           var item = { PostItNote: document.getElementById("someInput").value};
 
-          client.getTable("Item").insert(item);
+          client.getTable("testTable").insert(item);
           console.log(postMessage);
           //console.log(angMessage);
 
