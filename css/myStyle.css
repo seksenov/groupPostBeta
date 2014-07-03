@@ -19,4 +19,6 @@ input {
 
 .center {
     margin: auto;
+    width: 100%;
+    background-color: #b0e0e6;
 }
