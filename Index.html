@@ -11,9 +11,12 @@
       <button type="button" onClick="addItem();">Post!</button>
       <button ng-click="add()">ng-Post!</button>
       <input id="clickMe" type="button" value="clickme" onclick="addItem2();" />
+      <!-- <input name="textbox1" id="textbox1" type="text" />
+      <input name="buttonExecute" onclick="execute(document.getElementById('textbox1').value)" type="button" value="Execute" /> -->
       <hr>
       <!-- The PostIt message you're currently entering! -->
-      <h1>Your PostIt message is: {{ PostIt }}</h1> 
+      <h1>Your PostIt message is: </h1>
+      <p id="demo"> {{ PostIt }} </p>
     </div>
 
     <!--commit-->
@@ -55,6 +58,7 @@
       function PostItController($scope) {
        $scope.add = function() {
         client.getTable("Item").insert($scope.PostIt);
+
        }
       }
       
@@ -71,10 +75,9 @@
 
       function addItem()
       {
-          var item2 = { text: "2: This is the button" };
-          //ar postItText = x;
-          client.getTable("Item").insert(item2);
-          //client.getTable("Item").insert(postItText);
+          var postMessage = document.getElementById("demo").innerHTML;
+
+          console.log(postMessage);
 
       }
 
