@@ -14,6 +14,9 @@ input {
     margin: 0 0 10px 0;
     font-size: 16px;
     font-family: "Comic Sans MS";
+}
+
+.center {
     margin-left: auto;
     margin-right: auto;
 }
