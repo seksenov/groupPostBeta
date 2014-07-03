@@ -1,17 +1,17 @@
 <!doctype html>
-<html> <!--ng-app="postItApp">-->
+<html ng-app="postItApp"> <!--ng-app="postItApp">-->
   <head>
     <script src="http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.1.3.min.js"></script>
   </head>
 <body>
-    <div> <!-- ng-controller="PostItController"> -->
+    <div ng-controller="PostItController"> <!-- ng-controller="PostItController"> -->
       <label>PostIt:</label>
-      <input id="someInput" type="text"  placeholder="Enter your PostIt Note"> <!--ng-model="PostIt">-->
+      <input id="someInput" type="text" ng-model="PostIt" placeholder="Enter your PostIt Note"> <!--ng-model="PostIt">-->
       <button type="button" onClick="addItem();">Post!</button>
       <hr>
       <!-- The PostIt message you're currently entering! -->
       <h1>Your PostIt message is: </h1>
-      <!--<p id="demo"> {{ PostIt }} </p> -->
+      <p id="demo"> {{ PostIt }} </p>
     </div>
 
    
@@ -22,12 +22,12 @@
 
     
     <script>
-      //var app = angular.module('postItApp', []);
+      var app = angular.module('postItApp', []);
       
       
-      //app.controller('PostItController', function($scope) {
+      app.controller('PostItController', function($scope) {
         
-      //});
+      });
       
       
       var client = new WindowsAzure.MobileServiceClient(
@@ -35,13 +35,13 @@
       "hyCoAnJjoajhcntTKrzmnBPJaxKCiw45"
       );
 
-      var item = { text: "1: This is Static" };
-      client.getTable("Item").insert(item);
+      //var item = { text: "1: This is Static" };
+      //client.getTable("Item").insert(item);
 
       function addItem()
       {
           var postMessage = document.getElementById("someInput").value;
-          var item = { text: document.getElementById("someInput").value};
+          var item = { PostItNote: document.getElementById("someInput").value};
 
           client.getTable("Item").insert(item);
           console.log(postMessage);
