@@ -6,10 +6,12 @@
   </head>
 <body>
     <div ng-controller="PostItController"> <!-- ng-controller="PostItController"> -->
-      <label>PostIt:</label>
-      <input id="someInput" type="text" class="center" ng-model="PostIt" placeholder="Enter your PostIt Note"> 
-      <!--ng-model="PostIt">-->
-      <button type="button" onClick="addItem();">Post!</button>
+      <div class="center">
+        <label>PostIt:</label>
+        <input id="someInput" type="text" ng-model="PostIt" placeholder="Enter your PostIt Note"> 
+        <!--ng-model="PostIt">-->
+        <button type="button" onClick="addItem();">Post!</button>
+      </div>
       <hr>
       <!-- The PostIt message you're currently entering! -->
       <h1>Your PostIt message is: </h1>
