@@ -1,7 +1,6 @@
 <!doctype html>
 <html ng-app="postItApp">
   <head>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"></script>-->
     <script src="http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.1.3.min.js"></script>
   </head>
 <body>
@@ -27,52 +26,26 @@
       
       
       app.controller('PostItController', function($scope) {
-        $scope.customers = [
-          {"id": 1, "name": "Ted", "total": 5.996},
-          {"id": 2, "name": "Michelle", "total": 10.994},
-          {"id": 3, "name": "Zed", "total": 10.99},
-          {"id": 4, "name": "Tina", "total": 15.994}
-        ];
+        
       });
       
-
-      function PostItController($scope) {
-       $scope.add = function() {
-        client.getTable("Item").insert($scope.PostIt);
-
-       }
-      }
       
       var client = new WindowsAzure.MobileServiceClient(
-          "https://grouppostbetadb.azure-mobile.net/",
-          "hyCoAnJjoajhcntTKrzmnBPJaxKCiw45"
-      );
+    "https://grouppostbetadb.azure-mobile.net/",
+    "hyCoAnJjoajhcntTKrzmnBPJaxKCiw45"
+);
 
       var item = { text: "1: This is Static" };
-      client.getTable("Item").insert(item);
-
-      var item = { text: "Awesome item" };
       client.getTable("Item").insert(item);
 
       function addItem()
       {
           var postMessage = document.getElementById("someInput").value;
-
-          //var angMessage = gocument.getElementById("PostIt").innerHTML;
-
+          client.getTable("Item").insert(postMessage);
           console.log(postMessage);
           //console.log(angMessage);
 
       }
-
-      function addItem2()
-      {
-        var item3 = { text: "3 ClickMe" };
-          client.getTable("Item").insert(item3);
-          //client.getTable("Item").insert(postItText);
-      }
-
-
     </script>
   
 
