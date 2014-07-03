@@ -16,8 +16,7 @@
       <hr>
       <!-- The PostIt message you're currently entering! -->
       <h1>Your PostIt message is: </h1>
-      <p> {{ PostIt }} </p>
-      
+      <p id="demo"> {{ PostIt }} </p>
     </div>
 
     <!--commit-->
@@ -76,7 +75,7 @@
 
       function addItem()
       {
-          //var postMessage = document.getElementById("demo").innerHTML;
+          var postMessage = document.getElementById("demo").innerHTML;
 
           var angMessage = gocument.getElementById("PostIt").innerHTML;
 
