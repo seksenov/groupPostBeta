@@ -1,5 +1,5 @@
 input {
-    border: 5px solid white; 
+    border: 5px solid #FFFF00; 
     -webkit-box-shadow: 
       inset 0 0 8px  rgba(0,0,0,0.1),
             0 0 16px rgba(0,0,0,0.1); 
@@ -10,7 +10,8 @@ input {
       inset 0 0 8px  rgba(0,0,0,0.1),
             0 0 16px rgba(0,0,0,0.1); 
     padding: 15px;
-    background: rgba(255,255,255,0.5);
+    /*background: rgba(255,255,255,0.5);*/
+    background-color: #FFFF66;
     margin: 0 0 10px 0;
     font-size: 20px;
     font-family: "Comic Sans MS";
@@ -29,7 +30,7 @@ button {
       inset 0 0 8px  rgba(0,0,0,0.1),
             0 0 16px rgba(0,0,0,0.1); 
     padding: 15px;
-    background: yellow;
+    background-color: #66CCFF;
     margin: 0 0 10px 0;
     font-size: 20px;
     font-family: "Comic Sans MS";
