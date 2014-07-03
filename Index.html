@@ -31,9 +31,9 @@
       
       
       var client = new WindowsAzure.MobileServiceClient(
-    "https://grouppostbetadb.azure-mobile.net/",
-    "hyCoAnJjoajhcntTKrzmnBPJaxKCiw45"
-);
+      "https://grouppostbetadb.azure-mobile.net/",
+      "hyCoAnJjoajhcntTKrzmnBPJaxKCiw45"
+      );
 
       var item = { text: "1: This is Static" };
       client.getTable("Item").insert(item);
@@ -41,7 +41,9 @@
       function addItem()
       {
           var postMessage = document.getElementById("someInput").value;
-          client.getTable("Item").insert(text:postMessage);
+          var item = { text: document.getElementById("someInput").value};
+
+          client.getTable("Item").insert(item);
           console.log(postMessage);
           //console.log(angMessage);
 
