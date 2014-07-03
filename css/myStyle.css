@@ -14,11 +14,11 @@ input {
     margin: 0 0 10px 0;
     font-size: 20px;
     font-family: "Comic Sans MS";
-    font-style: 
+    font-weight:bold;
+    align
 }
 
 .center {
-    margin: auto;
-    width: 0%;
-    background-color: #b0e0e6;
+    position: absolute;
+    left: 50%;
 }
