@@ -12,7 +12,7 @@
         <input id="someInput" class="input" type="text" ng-model="PostIt" placeholder="Enter your PostIt Note"> 
         <!--ng-model="PostIt">-->
         <button type="button" onClick="addItem();">Post!</button>
-        <button type="button" onClick="addPostIt();">Add PostIt</button>
+        <!-- <button type="button" onClick="addPostIt();">Add PostIt</button> -->
       </div>
       <hr>
       <!-- The PostIt message you're currently entering! -->
@@ -57,7 +57,7 @@
           client.getTable("testTable").insert(item);
           //console.log(postMessage);
 
-          var str1 = '<img src="http://placehold.it/200/FFFF99/000000&text=';
+          var str1 = '<img src="http://placehold.it/500/FFFF99/000000&text=';
           var str3 = '" class="boxSeparation"/>'
 
           var result = str1.concat(postMessage,str3);
@@ -68,19 +68,24 @@
           //console.log(angMessage);
       }
 
+      /*
+
       function addPostIt()
       {
           console.log("Here in the post it function");
 
-          var imgSrc = "http://placehold.it/200/FFFF99/000000";
+          var imgSrc = "http://placehold.it/500/FFFF99/000000";
 
-          $('#postItNotes').append('<img src="http://placehold.it/200/FFFF99/000000" class="boxSeparation"/>');
+          $('#postItNotes').append('<img src="http://placehold.it/500/FFFF99/000000" class="boxSeparation"/>');
 
           //$("<img />").attr("src", imgSrc).load(function(){
           //$(this).clone().prependTo('li');
           //});
 
       }
+
+      */
+
     </script>
   
 
