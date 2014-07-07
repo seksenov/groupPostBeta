@@ -11,11 +11,15 @@
         <label class= "labelClass">PostIt:</label>
         <input id="someInput" class="input" type="text" ng-model="PostIt" placeholder="Enter your PostIt Note"> 
         <!--ng-model="PostIt">-->
-        <button type="button" class="buttons" onClick="addItem();">Post!</button>
+        <button type="button" onClick="addItem();">Post!</button>
+        <button type="button" onClick="addPostIt();">Add PostIt</button>
       </div>
       <hr>
       <!-- The PostIt message you're currently entering! -->
       <h1 class = "row text-center">Your PostIt message is: {{ PostIt }}</h1>
+      <div class = "row text-center" id = "postItNotes">
+        <!-- This is where the PostIt Notes Get Added -->
+      </div>
     </div>
 
    
@@ -23,6 +27,8 @@
     <script src="js/lib/angular.js"></script>
     <script src="js/lib/angular-route.js"></script>
     <script src="js/lib/angular-animate.js"></script>
+    <script src="js/lib/jquery-2.1.1.js"></script>
+ 
 
     
     <script>
@@ -47,9 +53,32 @@
           var postMessage = document.getElementById("someInput").value;
           var item = { PostItNote: document.getElementById("someInput").value};
 
+
           client.getTable("testTable").insert(item);
-          console.log(postMessage);
+          //console.log(postMessage);
+
+          var str1 = '<img src="http://placehold.it/200/FFFF99/000000&text=';
+          var str3 = '" class="boxSeparation"/>'
+
+          var result = str1.concat(postMessage,str3);
+
+          console.log(result);
+
+          $('#postItNotes').append(result);
           //console.log(angMessage);
+      }
+
+      function addPostIt()
+      {
+          console.log("Here in the post it function");
+
+          var imgSrc = "http://placehold.it/200/FFFF99/000000";
+
+          $('#postItNotes').append('<img src="http://placehold.it/200/FFFF99/000000" class="boxSeparation"/>');
+
+          //$("<img />").attr("src", imgSrc).load(function(){
+          //$(this).clone().prependTo('li');
+          //});
 
       }
     </script>
