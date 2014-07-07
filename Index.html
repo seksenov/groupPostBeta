@@ -7,15 +7,15 @@
   </head>
 <body>
     <div ng-controller="PostItController"> <!-- ng-controller="PostItController"> -->
-      <div>
-        <label>PostIt:</label>
-        <input id="someInput" type="text" ng-model="PostIt" placeholder="Enter your PostIt Note"> 
+      <div class = "row text-center">
+        <label class= "labelClass">PostIt:</label>
+        <input id="someInput" class="input" type="text" ng-model="PostIt" placeholder="Enter your PostIt Note"> 
         <!--ng-model="PostIt">-->
         <button type="button" class="buttons" onClick="addItem();">Post!</button>
       </div>
       <hr>
       <!-- The PostIt message you're currently entering! -->
-      <h1>Your PostIt message is: {{ PostIt }}</h1>
+      <h1 class = "row text-center">Your PostIt message is: {{ PostIt }}</h1>
     </div>
 
    
