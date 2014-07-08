@@ -57,6 +57,7 @@
           client.getTable("testTable").insert(item);
           //console.log(postMessage);
 
+          /*
           var str1 = '<img src="http://placehold.it/300/FFFF99/000000&text=';
           var str3 = '" class="boxSeparation"/>'
 
@@ -65,7 +66,22 @@
           console.log(result);
 
           $('#postItNotes').append(result);
+          */
           //console.log(angMessage);
+
+          var canvas = document.createElement('canvas');
+          canvas.id = "canvasStyle";
+
+          document.body.appendChild(canvas); // adds the canvas to the body element
+          document.getElementById('postItNotes').appendChild(canvas);
+
+          var ctx=canvas.getContext("2d");
+
+          ctx.font="30px Comic Sans MS";
+          ctx.fillText(postMessage, 10, 30, 300);
+
+
+          //$('#postItNotes').append(canvas);
       }
 
       /*
