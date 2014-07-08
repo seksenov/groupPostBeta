@@ -31,9 +31,8 @@
     margin-top: 5px;
 }
 
-#canvasStyle {
-    height: 300px;
-    width: 300px;
+canvas {
+    font-weight: bold;
     margin-right: 5px;
     margin-left:  5px;
     margin-bottom: 2px;
