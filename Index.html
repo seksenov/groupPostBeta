@@ -9,7 +9,7 @@
     <div ng-controller="PostItController"> <!-- ng-controller="PostItController"> -->
       <div class = "row text-center">
         <label class= "labelClass">PostIt:</label>
-        <input id="someInput" class="input" type="text" ng-model="PostIt" placeholder="Enter your PostIt Note"> 
+        <input id="someInput" class="input" type="text" ng-model="PostIt" placeholder="Enter your PostIt Note" onfocus="clearInputText"> 
         <!--ng-model="PostIt">-->
         <button type="button" id="postButton" onClick="addItem();">Post!</button>
         <!-- <button type="button" onClick="addPostIt();">Add PostIt</button> -->
@@ -56,6 +56,8 @@
 
       function addItem()
       {
+
+
           var postMessage = document.getElementById("someInput").value;
           var item = { PostItNote: document.getElementById("someInput").value};
 
@@ -97,6 +99,9 @@
           context.fillStyle = '#333';
 
           wrapText(context, postMessage, x, y, maxWidth, lineHeight);
+
+          //Clear the value of the input field
+          document.getElementById("someInput").value = '';
 
           //ctx.font="30px Comic Sans MS";
           //ctx.fillText(postMessage, 10, 30, 300);
@@ -176,10 +181,9 @@
         context.fillText(line, x, y);
       }
 
-      //Function to have the enter key post as well
+      //Function to have the Enter key post as well as clicking the button
       $("#someInput").keyup(function(event){
         if(event.keyCode == 13){
-          console.log("Wooooo here the press is woring!!!!!!!");
           $("#postButton").click();
         }
       });
