@@ -118,13 +118,24 @@
           //console.log(testLine);
           //console.log(metrics);
           //console.log(testWidth);
-          if (testWidth > maxWidth && n > 0) {
-            context.fillText(line, x, y);
-            line = words[n] + ' ';
-            y += lineHeight;
+          if (testWidth > maxWidth) {
+
+            console.log("here in the big if");
+
+            if (n>0)
+            {
+              context.fillText(line, x, y);
+              line = words[n] + ' ';
+              y += lineHeight; 
+            }
+            else
+            {
+              line = testLine;
+            }
+             
 
             //This is the extra checker if for a songle word that is too long
-            if (context.measureText(line).width > maxWidth)
+            if (context.measureText(line).width > maxWidth) // && line.split(' ').cou)
             {
               console.log("This word: " + line + "is too long!!!!");
               var letters = line.split("");
@@ -138,10 +149,11 @@
 
                 console.log("This is the testWord width: " + wordWidth);
 
-                if (wordWidth > maxWidth && n > 0) {
+                if (wordWidth > (maxWidth-16) && n > 0) {
+                  console.log("here in the small if");
                   word += "-";
                   context.fillText(word, x, y);
-                  word = letters[n];
+                  word = letters[i];
                   y+= lineHeight;
                 }
                 else
@@ -149,6 +161,7 @@
                   word = testWord;
                 }
               }
+              line = word;
             }
 
             //Test word:
