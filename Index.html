@@ -109,14 +109,52 @@
         var words = text.split(' ');
         var line = '';
 
+        console.log("WORDS: " + words);
+
         for(var n = 0; n < words.length; n++) {
           var testLine = line + words[n] + ' ';
           var metrics = context.measureText(testLine);
           var testWidth = metrics.width;
+          //console.log(testLine);
+          //console.log(metrics);
+          //console.log(testWidth);
           if (testWidth > maxWidth && n > 0) {
             context.fillText(line, x, y);
             line = words[n] + ' ';
             y += lineHeight;
+
+            //This is the extra checker if for a songle word that is too long
+            if (context.measureText(line).width > maxWidth)
+            {
+              console.log("This word: " + line + "is too long!!!!");
+              var letters = line.split("");
+              console.log(letters);
+              var word = '';
+              //Do work here to figure out where to split the word
+              for(var i=0; i < letters.length; i++) {
+
+                var testWord = word + letters[i];
+                var wordWidth = context.measureText(testWord).width;
+
+                console.log("This is the testWord width: " + wordWidth);
+
+                if (wordWidth > maxWidth && n > 0) {
+                  word += "-";
+                  context.fillText(word, x, y);
+                  word = letters[n];
+                  y+= lineHeight;
+                }
+                else
+                {
+                  word = testWord;
+                }
+              }
+            }
+
+            //Test word:
+            //hello one line word ksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksks
+
+            //---------------------------------------------------------------------
           }
           else {
             line = testLine;
@@ -124,6 +162,8 @@
         }
         context.fillText(line, x, y);
       }
+
+
 
       /*
 
