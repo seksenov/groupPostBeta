@@ -119,6 +119,7 @@
           //$('#postItNotes').append(canvas);
       }
 
+      //This function supports multi line text wrap within canvas
       function wrapText(context, text, x, y, maxWidth, lineHeight) {
         var words = text.split(' ');
         var line = '';
@@ -129,12 +130,7 @@
           var testLine = line + words[n] + ' ';
           var metrics = context.measureText(testLine);
           var testWidth = metrics.width;
-          //console.log(testLine);
-          //console.log(metrics);
-          //console.log(testWidth);
           if (testWidth > maxWidth) {
-
-            //console.log("here in the big if");
 
             if (n>0)
             {
@@ -148,12 +144,12 @@
             }
              
 
-            //This is the extra checker if for a songle word that is too long
+            //This is the extra checker if for a single word that is too long
             if (context.measureText(line).width > maxWidth) // && line.split(' ').cou)
             {
               console.log("This word: " + line + "is too long!!!!");
               var letters = line.split("");
-              console.log(letters);
+              //console.log(letters);
               var word = '';
               //Do work here to figure out where to split the word
               for(var i=0; i < letters.length; i++) {
@@ -161,10 +157,9 @@
                 var testWord = word + letters[i];
                 var wordWidth = context.measureText(testWord).width;
 
-                console.log("This is the testWord width: " + wordWidth);
+                //console.log("This is the testWord width: " + wordWidth);
 
-                if (wordWidth > (maxWidth-16) && n > 0) {
-                  console.log("here in the small if");
+                if (wordWidth > (maxWidth-16) && i > 0) {
                   word += "-";
                   context.fillText(word, x, y);
                   word = letters[i];
@@ -177,11 +172,6 @@
               }
               line = word;
             }
-
-            //Test word:
-            //hello one line word ksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksksks
-
-            //---------------------------------------------------------------------
           }
           else {
             line = testLine;
