@@ -9,9 +9,9 @@
     <div ng-controller="PostItController"> <!-- ng-controller="PostItController"> -->
       <div class = "row text-center">
         <label class= "labelClass">PostIt:</label>
-        <input id="someInput" class="input" type="text" ng-model="PostIt" placeholder="Enter your PostIt Note" onfocus="clearInputText"> 
+        <input id="someInput" class="input" type="text" ng-model="PostIt" placeholder="Enter your PostIt Note"> <!-- onfocus="clearInputText"> -->
         <!--ng-model="PostIt">-->
-        <button type="button" id="postButton" onClick="addItem();">Post!</button>
+        <button type="button" id="postButton" onClick="addItem(false,'');">Post!</button>
         <!-- <button type="button" onClick="addPostIt();">Add PostIt</button> -->
       </div>
       <hr>
@@ -51,19 +51,28 @@
       "hyCoAnJjoajhcntTKrzmnBPJaxKCiw45"
       );
 
+      var testTable=null;
+      testTable=client.getTable("testTable");
+
+      getPostIts();
+
       //var item = { text: "1: This is Static" };
       //client.getTable("Item").insert(item);
 
-      function addItem()
+      function addItem(isInit, postText)
       {
 
 
-          var postMessage = document.getElementById("someInput").value;
-          var item = { PostItNote: document.getElementById("someInput").value};
+          if(!isInit) {
+            var postMessage = document.getElementById("someInput").value;
+            var item = { PostItNote: document.getElementById("someInput").value};
+            testTable.insert(item);
+          }
+          else{
+            var postMessage = postText;
+          }
 
-
-          client.getTable("testTable").insert(item);
-          console.log(postMessage);
+          //console.log(postMessage);
 
           /*
           var str1 = '<img src="http://placehold.it/300/FFFF99/000000&text=';
@@ -125,7 +134,7 @@
           //console.log(testWidth);
           if (testWidth > maxWidth) {
 
-            console.log("here in the big if");
+            //console.log("here in the big if");
 
             if (n>0)
             {
@@ -207,6 +216,27 @@
       }
 
       */
+
+
+      //Read the DB and pull old PostITs
+
+       function getPostIts(){ 
+        var query = testTable; //Give it column name
+        console.log("GOT POST PostITs");
+        //console.log("type of element: "+element);
+        query.read().then(function (postIts) {
+          for (var i = 0; i < postIts.length; i++) {
+          console.log(postIts[i].PostItNote);
+          addItem(true, postIts[i].PostItNote);
+          //var loc = new Microsoft.Maps.Location(pins[i].latitude, pins[i].longitude);
+          //var vModeT=pins[i].victimmodeoftransportation;
+          //changePin(vModeT);
+          //pin = new Microsoft.Maps.Pushpin(loc, {icon: typeOfPin, width: 36, height: 36, draggable: false}); 
+          //pin.setOptions({ icon: "RedPin.png" }); 
+          //map.entities.push(pin);
+          }
+        });
+      }
 
     </script>
   
