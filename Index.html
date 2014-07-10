@@ -59,6 +59,18 @@
       //var item = { text: "1: This is Static" };
       //client.getTable("Item").insert(item);
 
+      //Select the clicked canvas
+      function selectCanvas(canvasID)
+      {
+        //console.log(canvasID);
+        //var ctx = document.getElementById(canvasID).getContext("2d");
+
+        document.getElementById(canvasID).style.background = '#FFFF00';
+        //ctx.fillStyle="#FF0000";
+        //ctx.fillRect(20,20,150,100);
+
+      }
+
       function addItem(isInit, postText)
       {
 
@@ -97,6 +109,8 @@
 
           document.body.appendChild(canvas); // adds the canvas to the body element
           document.getElementById('postItNotes').appendChild(canvas);
+
+          canvas.addEventListener("click", function (e) { selectCanvas(canvas.id); });
 
           
           var context=canvas.getContext("2d");
