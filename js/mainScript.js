@@ -3,9 +3,6 @@ var app = angular.module('postItApp', []);
 
 var idNum = 0;
 
-var clicked = 0;
-
-
 app.controller('PostItController', function($scope) {
   
 });
@@ -29,17 +26,24 @@ function selectCanvas(canvasID)
 {
   //console.log(canvasID);
   //var ctx = document.getElementById(canvasID).getContext("2d");
-  if(clicked % 2)
+
+  var cvs = document.getElementById(canvasID); //The canvas
+  var cvsBack = cvs.style.background; //The canvas background
+  var ctx = cvs.getContext("2d");
+
+  var color = $( canvasID ).css( "background" );
+
+  console.log(color);
+
+  if(cvsBack == '#FFFF00')
   {
-    document.getElementById(canvasID).style.background = '#FFFF99';
+    cvs.background = '#FFFF99';
   }
   else
   {
-    document.getElementById(canvasID).style.background = '#FFFF00';  
+    cvs.style.background = '#FFFF00';  
   }
 
-  clicked++;
-  
   //ctx.fillStyle="#FF0000";
   //ctx.fillRect(20,20,150,100);
 
@@ -84,6 +88,7 @@ function addItem(isInit, postText)
     document.body.appendChild(canvas); // adds the canvas to the body element
     document.getElementById('postItNotes').appendChild(canvas);
 
+    //add an event listener to every canvas
     canvas.addEventListener("click", function (e) { selectCanvas(canvas.id); });
 
     
