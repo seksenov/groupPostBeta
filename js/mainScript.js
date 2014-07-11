@@ -46,20 +46,27 @@ function selectCanvas(canvasID)
 
 }
 
+/*
 $(document).on('click', 'div', function () {
     alert(this.id);
 });
+*/
 
 function selectDiv(divID)
 {
+  var initialColor = 'rgb(255, 255, 153)';
+  var div = document.getElementById(divID);
+  var backColor = div.style.backgroundColor;
 
-  
-  //var div = document.getElementById(divID);
-  //var backColor = div.style.backgroundColor;
+  console.log(backColor);
+  console.log(initialColor);
 
-  
-  //var color = $(divID).css( "background-color" );
-  //console.log(color);
+  if (backColor == initialColor){
+    div.style.backgroundColor = '#FFFF00';
+  }
+  else{
+    div.style.backgroundColor = '#FFFF99';
+  }
 }
 
 function addPostIt ()
@@ -83,11 +90,13 @@ function addPostIt ()
   console.log(div.id);
   console.log(div.className);
 
+  div.style.backgroundColor = '#FFFF99';
+
   //Add the div to the body and within the parent canvas div
   //document.body.appendChild(div); // adds the canvas to the body element
   document.getElementById('postItNotes').appendChild(div);
 
-  //div.addEventListener("click", function (e) { selectDiv(div.id); });
+  div.addEventListener("click", function (e) { selectDiv(div.id); });
 
   //div.innerHTML = div.innerHTML + postMessage;
 
