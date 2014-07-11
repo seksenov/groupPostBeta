@@ -16,7 +16,7 @@ var client = new WindowsAzure.MobileServiceClient(
 var testTable=null;
 testTable=client.getTable("testTable");
 
-getPostIts();
+//getPostIts();
 
 //var item = { text: "1: This is Static" };
 //client.getTable("Item").insert(item);
@@ -44,8 +44,58 @@ function selectCanvas(canvasID)
     cvs.style.background = '#FFFF00';  
   }
 
-  //ctx.fillStyle="#FF0000";
-  //ctx.fillRect(20,20,150,100);
+}
+
+$(document).on('click', 'div', function () {
+    alert(this.id);
+});
+
+function selectDiv(divID)
+{
+
+  
+  //var div = document.getElementById(divID);
+  //var backColor = div.style.backgroundColor;
+
+  
+  //var color = $(divID).css( "background-color" );
+  //console.log(color);
+}
+
+function addPostIt ()
+{
+  var postMessage = document.getElementById("someInput").value;
+  
+  /* Uncoment this to post to the database
+
+  var item = { PostItNote: document.getElementById("someInput").value};
+  testTable.insert(item);
+
+  */
+
+  var div = document.createElement('div');
+  div.id = "div" + idNum;
+  div.className = "col-centered col-fixed postIt";
+  //div.width = 300;
+  //div.height = 300;
+  idNum++;
+  //Log the id of the newly created div to the console
+  console.log(div.id);
+  console.log(div.className);
+
+  //Add the div to the body and within the parent canvas div
+  //document.body.appendChild(div); // adds the canvas to the body element
+  document.getElementById('postItNotes').appendChild(div);
+
+  //div.addEventListener("click", function (e) { selectDiv(div.id); });
+
+  //div.innerHTML = div.innerHTML + postMessage;
+
+  var t=document.createTextNode(postMessage);
+  div.appendChild(t);
+
+  //Clear the value of the input field
+  document.getElementById("someInput").value = '';
 
 }
 
@@ -61,22 +111,6 @@ function addItem(isInit, postText)
     else{
       var postMessage = postText;
     }
-
-    //console.log(postMessage);
-
-    /*
-    var str1 = '<img src="http://placehold.it/300/FFFF99/000000&text=';
-    var str3 = '" class="boxSeparation"/>'
-
-    var result = str1.concat(postMessage,str3);
-
-    console.log(result);
-
-    $('#postItNotes').append(result);
-    */
-    //console.log(angMessage);
-
-    
 
     var canvas = document.createElement('canvas');
     canvas.id = "canvasStyle" + idNum;
@@ -104,10 +138,6 @@ function addItem(isInit, postText)
 
     //Clear the value of the input field
     document.getElementById("someInput").value = '';
-
-    //ctx.font="30px Comic Sans MS";
-    //ctx.fillText(postMessage, 10, 30, 300);
-
 
     //$('#postItNotes').append(canvas);
 }
@@ -181,26 +211,6 @@ $("#someInput").keyup(function(event){
 });
 
 
-
-/*
-
-function addPostIt()
-{
-    console.log("Here in the post it function");
-
-    var imgSrc = "http://placehold.it/500/FFFF99/000000";
-
-    $('#postItNotes').append('<img src="http://placehold.it/500/FFFF99/000000" class="boxSeparation"/>');
-
-    //$("<img />").attr("src", imgSrc).load(function(){
-    //$(this).clone().prependTo('li');
-    //});
-
-}
-
-*/
-
-
 //Read the DB and pull old PostITs
 function getPostIts(){ 
   var query = testTable; //Give it column name
@@ -210,12 +220,6 @@ function getPostIts(){
     for (var i = 0; i < postIts.length; i++) {
     console.log(postIts[i].PostItNote);
     addItem(true, postIts[i].PostItNote);
-    //var loc = new Microsoft.Maps.Location(pins[i].latitude, pins[i].longitude);
-    //var vModeT=pins[i].victimmodeoftransportation;
-    //changePin(vModeT);
-    //pin = new Microsoft.Maps.Pushpin(loc, {icon: typeOfPin, width: 36, height: 36, draggable: false}); 
-    //pin.setOptions({ icon: "RedPin.png" }); 
-    //map.entities.push(pin);
     }
   });
 }
