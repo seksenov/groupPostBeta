@@ -62,7 +62,9 @@ function selectDiv(divID)
   console.log(initialColor);
 
   if (backColor == initialColor){
+
     div.style.backgroundColor = '#FFFF00';
+
   }
   else{
     div.style.backgroundColor = '#FFFF99';
@@ -79,10 +81,18 @@ function addPostIt ()
   testTable.insert(item);
 
   */
+  var dContainer = document.createElement('div');
+  dContainer.id = "dc" + idNum;
+  var dcID = "dc" + idNum;
+  dContainer.className = "col-centered col-fixed postIt";
+
+  document.getElementById('postItNotes').appendChild(dContainer);
 
   var div = document.createElement('div');
   div.id = "div" + idNum;
   div.className = "col-centered col-fixed postIt";
+  div.contentEditable = 'true';
+
   //div.width = 300;
   //div.height = 300;
   idNum++;
@@ -94,14 +104,22 @@ function addPostIt ()
 
   //Add the div to the body and within the parent canvas div
   //document.body.appendChild(div); // adds the canvas to the body element
-  document.getElementById('postItNotes').appendChild(div);
+  document.getElementById(dcID).appendChild(div);
 
-  div.addEventListener("click", function (e) { selectDiv(div.id); });
+  //div.addEventListener("click", function (e) { selectDiv(div.id); });
+
+
 
   //div.innerHTML = div.innerHTML + postMessage;
 
   var t=document.createTextNode(postMessage);
   div.appendChild(t);
+
+  var button=document.createElement('button');
+  var bt=document.createTextNode("Edit");
+  button.className = 'editButton';
+  button.appendChild(bt);  
+  dContainer.appendChild(button);
 
   //Clear the value of the input field
   document.getElementById("someInput").value = '';

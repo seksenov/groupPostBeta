@@ -19,6 +19,14 @@
     margin-top: 25px;
 }
 
+.editButton {
+
+    position:relative; 
+    right: -265px;
+    bottom: 45px;
+
+}
+
 .labelClass {
 
     font-size: 35px;
@@ -65,7 +73,7 @@ canvas {
     display:inline-block;
     float:none;
     /* reset the text-align */
-    /*text-align:left; */
+    text-align:left;
     /* inline-block space fix */
     margin-right:-4px;
 }
