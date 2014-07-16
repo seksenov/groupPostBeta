@@ -38,10 +38,11 @@ function selectCanvas(canvasID)
   if(cvsBack == '#FFFF00')
   {
     cvs.background = '#FFFF99';
+    
   }
   else
   {
-    cvs.style.background = '#FFFF00';  
+    cvs.style.background = '#FFFF00'; 
   }
 
 }
@@ -64,10 +65,12 @@ function selectDiv(divID)
   if (backColor == initialColor){
 
     div.style.backgroundColor = '#FFFF00';
-
+    div.contentEditable = 'true';
+    div.focus();
   }
   else{
     div.style.backgroundColor = '#FFFF99';
+    div.contentEditable = 'false'; 
   }
 }
 
@@ -91,7 +94,7 @@ function addPostIt ()
   var div = document.createElement('div');
   div.id = "div" + idNum;
   div.className = "col-centered col-fixed postIt";
-  div.contentEditable = 'true';
+  div.contentEditable = 'false';
 
   //div.width = 300;
   //div.height = 300;
@@ -118,7 +121,10 @@ function addPostIt ()
   var button=document.createElement('button');
   var bt=document.createTextNode("Edit");
   button.className = 'editButton';
-  button.appendChild(bt);  
+  button.appendChild(bt);
+
+  button.addEventListener("click", function (e) { selectDiv(div.id); });
+
   dContainer.appendChild(button);
 
   //Clear the value of the input field
