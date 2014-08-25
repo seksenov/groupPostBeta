@@ -53,11 +53,12 @@ $(document).on('click', 'div', function () {
 });
 */
 
-function selectDiv(divID)
+function selectDiv(divID, buttonID)
 {
   var initialColor = 'rgb(255, 255, 153)';
   var div = document.getElementById(divID);
   var backColor = div.style.backgroundColor;
+  var button = document.getElementById(buttonID);
 
   console.log(backColor);
   console.log(initialColor);
@@ -67,11 +68,13 @@ function selectDiv(divID)
     div.contentEditable = 'true';
     cursorManager.setEndOfContenteditable(div);
     div.focus();
+    button.innerHTML = 'Done';
 
   }
   else{
     div.style.backgroundColor = '#FFFF99';
     div.contentEditable = 'false'; 
+    button.innerHTML = 'Edit';
   }
 }
 
@@ -99,7 +102,7 @@ function addPostIt ()
 
   //div.width = 300;
   //div.height = 300;
-  idNum++;
+  
   //Log the id of the newly created div to the console
   console.log(div.id);
   console.log(div.className);
@@ -120,16 +123,21 @@ function addPostIt ()
   div.appendChild(t);
 
   var button=document.createElement('button');
-  var bt=document.createTextNode("Edit");
+  //var bt=document.createTextNode("Edit");
+  button.id = "editB" + idNum;
   button.className = 'editButton';
-  button.appendChild(bt);
+  //button.appendChild(bt);
 
-  button.addEventListener("click", function (e) { selectDiv(div.id); });
+  button.innerHTML ='Edit';
+
+  button.addEventListener("click", function (e) { selectDiv(div.id, button.id); });
 
   dContainer.appendChild(button);
 
   //Clear the value of the input field
   document.getElementById("someInput").value = '';
+
+  idNum++;
 
 }
 
