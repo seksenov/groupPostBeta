@@ -102,7 +102,10 @@ function addPostIt (isInit, postText)
   var dcID = "dc" + idNum;
   dContainer.className = "col-centered col-fixed postIt";
 
-  document.getElementById('postItNotes').appendChild(dContainer);
+  //document.getElementById('postItNotes').appendChild(dContainer);
+
+  //Insert the container as the first child of the div
+  document.getElementById('postItNotes').insertBefore(dContainer, document.getElementById('postItNotes').firstChild);
 
   var div = document.createElement('div');
   div.id = "div" + idNum;
@@ -267,6 +270,7 @@ function getPostIts(){
   var query = testTable; //Give it column name
   console.log("GOT POST PostITs");
   //console.log("type of element: "+element);
+  //Retrieve the post it's in LIFO order
   query.read().then(function (postIts) {
     for (var i = postIts.length-1; i >= 0; i--) {
     console.log(postIts[i].PostItNote);
