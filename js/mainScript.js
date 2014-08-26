@@ -16,7 +16,8 @@ var client = new WindowsAzure.MobileServiceClient(
 var testTable=null;
 testTable=client.getTable("testTable");
 
-//getPostIts();
+//Get all the post it's from the DB and display them on the page
+getPostIts();
 
 //var item = { text: "1: This is Static" };
 //client.getTable("Item").insert(item);
@@ -68,7 +69,7 @@ function selectDiv(divID, buttonID)
     div.contentEditable = 'true';
     cursorManager.setEndOfContenteditable(div);
     div.focus();
-    button.innerHTML = 'Done';
+    button.innerHTML = 'Post';
 
   }
   else{
@@ -78,9 +79,17 @@ function selectDiv(divID, buttonID)
   }
 }
 
-function addPostIt ()
+function addPostIt (isInit, postText)
 {
-  var postMessage = document.getElementById("someInput").value;
+
+  if(!isInit) {
+      var postMessage = document.getElementById("someInput").value
+      var item = { PostItNote: document.getElementById("someInput").value};
+      testTable.insert(item);
+    }
+    else{
+      var postMessage = postText;
+    }
   
   /* Uncoment this to post to the database
 
@@ -261,7 +270,7 @@ function getPostIts(){
   query.read().then(function (postIts) {
     for (var i = 0; i < postIts.length; i++) {
     console.log(postIts[i].PostItNote);
-    addItem(true, postIts[i].PostItNote);
+    addPostIt(true, postIts[i].PostItNote);
     }
   });
 }
