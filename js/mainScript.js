@@ -74,59 +74,44 @@ function selectDiv(divID, buttonID)
   }
   //This is what gets executed when the post button is hit
   else{
-    console.log(div.innerHTML);
-    //console.log(divID);
+    //Update the PostIt note in the DB
     var query = userTable;
-
-
     query.where({ PID: divID }).read().then(function (postIts) {
-    //for (var i = 0; i < postIts.length; i++) {
-    console.log(postIts[0].PostItNote);
-    postIts[0].PostItNote = div.innerHTML;
-    userTable.update(postIts[0]);
-    //request.respond(200, postIts[0]);
-    //console.log('updated position ok');
-    //saddPostIt(true, postIts[i].PostItNote);
-    
+      console.log(postIts[0].PostItNote);
+      postIts[0].PostItNote = div.innerHTML;
+      userTable.update(postIts[0]);
     });
-
-    //userTable.select('PID')
-    //.read({ success: function(results) { console.log(results) }});
-
-    //userTable.where({ PID: divID})
-    //.read({ success: function(results) { console.log("here got the right PID") }});
-
-    //userTable.read
-
-    /*
-  userTable.where({PID: divID}).read({
-    success: function(results) {
-      console.log('here');
-      console.log(results[0]);
-      if (results.length > 0) {
-        //We found a record, update some values in it
-        results[0].PostItNote = div.innerHTML;
-        //Update it in the DB
-        userTable.update(results[0]);
-        //Respond to the client
-        request.respond(200, results[0]);
-        console.log('updated position ok');
-
-      } //else {
-        //Perform the insert in the DB
-        //request.execute();
-        //console.log('Added New Entry',user.userId);
-        //Reply with 201 (created) and the updated item
-        //request.respond(201, item);
-      //}
+    //Check if this is the last post it and if so add another one
+    var lastDiv = "div" + (idNum-1);
+    console.log(lastDiv);
+    if(divID == lastDiv)
+    {
+      addPostIt(false, "");
     }
-  });
-*/
 
     div.style.backgroundColor = '#FFFF99';
     div.contentEditable = 'false'; 
     button.innerHTML = 'Edit';
   }
+}
+
+function deleteDiv(divID, dcID, buttonID) {
+  console.log("deleting div");
+
+  var lastDiv = "div" + (idNum-1);
+  if(divID != lastDiv)
+  {
+    var query = userTable;
+     query.where({ PID: divID }).read().then(function (postIts) {
+      console.log(postIts[0].PostItNote);
+      console.log(postIts[0].id);
+      userTable.del(postIts[0]);
+     });
+
+     $('#' + dcID).remove();
+  }
+
+
 }
 
 function addPostIt (isInit, postText)
@@ -137,10 +122,11 @@ function addPostIt (isInit, postText)
       var pid = "div" + idNum;
       var item = { PostItNote: document.getElementById("someInput").value, PID: pid};
       userTable.insert(item);
-    }
-    else{
-      var postMessage = postText;
-    }
+  }
+  else{
+    var postMessage = postText;
+  
+  }
   
   /* Uncoment this to post to the database
 
@@ -185,21 +171,26 @@ function addPostIt (isInit, postText)
   var t=document.createTextNode(postMessage);
   div.appendChild(t);
 
+  //Add the edit button
   var button=document.createElement('button');
-  //var bt=document.createTextNode("Edit");
   button.id = "editB" + idNum;
   button.className = 'editButton';
-  //button.appendChild(bt);
-
   button.innerHTML ='Edit';
-
   button.addEventListener("click", function (e) { selectDiv(div.id, button.id); });
-
   dContainer.appendChild(button);
+
+  
+  //Add the delete button
+  var dButton=document.createElement('button');
+  dButton.id = "deleteB" + idNum;
+  dButton.className = 'deleteButton';
+  dButton.innerHTML ='Delete';
+  dButton.addEventListener("click", function (e) { deleteDiv(div.id, dcID, dButton.id); });
+  dContainer.appendChild(dButton);
 
   //Clear the value of the input field
   document.getElementById("someInput").value = '';
-
+  
   idNum++;
 
 }
