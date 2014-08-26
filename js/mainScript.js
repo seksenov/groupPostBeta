@@ -13,8 +13,8 @@ var client = new WindowsAzure.MobileServiceClient(
 "hyCoAnJjoajhcntTKrzmnBPJaxKCiw45"
 );
 
-var testTable=null;
-testTable=client.getTable("testTable");
+var userTable=null;
+userTable=client.getTable("userTable");
 
 //Get all the post it's from the DB and display them on the page
 getPostIts();
@@ -63,16 +63,66 @@ function selectDiv(divID, buttonID)
 
   console.log(backColor);
   console.log(initialColor);
+  console.log(div.contentEditable);
 
-  if (backColor == initialColor){
+  if (div.contentEditable === 'false'){
     div.style.backgroundColor = '#FFFF00';
     div.contentEditable = 'true';
     cursorManager.setEndOfContenteditable(div);
     div.focus();
     button.innerHTML = 'Post';
-
   }
+  //This is what gets executed when the post button is hit
   else{
+    console.log(div.innerHTML);
+    //console.log(divID);
+    var query = userTable;
+
+
+    query.where({ PID: divID }).read().then(function (postIts) {
+    //for (var i = 0; i < postIts.length; i++) {
+    console.log(postIts[0].PostItNote);
+    postIts[0].PostItNote = div.innerHTML;
+    userTable.update(postIts[0]);
+    //request.respond(200, postIts[0]);
+    //console.log('updated position ok');
+    //saddPostIt(true, postIts[i].PostItNote);
+    
+    });
+
+    //userTable.select('PID')
+    //.read({ success: function(results) { console.log(results) }});
+
+    //userTable.where({ PID: divID})
+    //.read({ success: function(results) { console.log("here got the right PID") }});
+
+    //userTable.read
+
+    /*
+  userTable.where({PID: divID}).read({
+    success: function(results) {
+      console.log('here');
+      console.log(results[0]);
+      if (results.length > 0) {
+        //We found a record, update some values in it
+        results[0].PostItNote = div.innerHTML;
+        //Update it in the DB
+        userTable.update(results[0]);
+        //Respond to the client
+        request.respond(200, results[0]);
+        console.log('updated position ok');
+
+      } //else {
+        //Perform the insert in the DB
+        //request.execute();
+        //console.log('Added New Entry',user.userId);
+        //Reply with 201 (created) and the updated item
+        //request.respond(201, item);
+      //}
+    }
+  });
+*/
+
     div.style.backgroundColor = '#FFFF99';
     div.contentEditable = 'false'; 
     button.innerHTML = 'Edit';
@@ -84,8 +134,9 @@ function addPostIt (isInit, postText)
 
   if(!isInit) {
       var postMessage = document.getElementById("someInput").value
-      var item = { PostItNote: document.getElementById("someInput").value};
-      testTable.insert(item);
+      var pid = "div" + idNum;
+      var item = { PostItNote: document.getElementById("someInput").value, PID: pid};
+      userTable.insert(item);
     }
     else{
       var postMessage = postText;
@@ -94,7 +145,7 @@ function addPostIt (isInit, postText)
   /* Uncoment this to post to the database
 
   var item = { PostItNote: document.getElementById("someInput").value};
-  testTable.insert(item);
+  userTable.insert(item);
 
   */
   var dContainer = document.createElement('div');
@@ -160,7 +211,7 @@ function addItem(isInit, postText)
     if(!isInit) {
       var postMessage = document.getElementById("someInput").value;
       var item = { PostItNote: document.getElementById("someInput").value};
-      testTable.insert(item);
+      userTable.insert(item);
     }
     else{
       var postMessage = postText;
@@ -267,12 +318,12 @@ $("#someInput").keyup(function(event){
 
 //Read the DB and pull old PostITs
 function getPostIts(){ 
-  var query = testTable; //Give it column name
+  var query = userTable; //Give it column name
   console.log("GOT POST PostITs");
   //console.log("type of element: "+element);
   //Retrieve the post it's in LIFO order
   query.read().then(function (postIts) {
-    for (var i = postIts.length-1; i >= 0; i--) {
+    for (var i = 0; i < postIts.length; i++) {
     console.log(postIts[i].PostItNote);
     addPostIt(true, postIts[i].PostItNote);
     }
