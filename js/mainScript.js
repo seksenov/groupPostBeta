@@ -268,7 +268,7 @@ function getPostIts(){
   console.log("GOT POST PostITs");
   //console.log("type of element: "+element);
   query.read().then(function (postIts) {
-    for (var i = 0; i < postIts.length; i++) {
+    for (var i = postIts.length-1; i >= 0; i--) {
     console.log(postIts[i].PostItNote);
     addPostIt(true, postIts[i].PostItNote);
     }
