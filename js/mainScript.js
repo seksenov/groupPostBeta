@@ -48,6 +48,11 @@ function selectCanvas(canvasID)
 
 }
 
+function FBLogout() {
+  FB.logout(function(response) {
+        // Person is now logged out
+  });
+}
 /*
 $(document).on('click', 'div', function () {
     alert(this.id);
