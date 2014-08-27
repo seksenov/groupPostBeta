@@ -50,7 +50,7 @@ function selectCanvas(canvasID)
 
 function FBLogout() {
   FB.logout(function(response) {
-        // Person is now logged out
+        console.log("Person is now logged out");
   });
 }
 /*
