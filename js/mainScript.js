@@ -114,8 +114,7 @@ function deleteDiv(divID, dcID, buttonID) {
 
 }
 
-function addPostIt (isInit, postText)
-{
+function addPostIt (isInit, postText){
 
   if(!isInit) {
       var postMessage = document.getElementById("someInput").value
@@ -129,18 +128,10 @@ function addPostIt (isInit, postText)
   
   }
   
-  /* Uncoment this to post to the database
-
-  var item = { PostItNote: document.getElementById("someInput").value};
-  userTable.insert(item);
-
-  */
   var dContainer = document.createElement('div');
   dContainer.id = "dc" + idNum;
   var dcID = "dc" + idNum;
   dContainer.className = "col-centered col-fixed postIt";
-
-  //document.getElementById('postItNotes').appendChild(dContainer);
 
   //Insert the container as the first child of the div
   document.getElementById('postItNotes').insertBefore(dContainer, document.getElementById('postItNotes').firstChild);
@@ -150,9 +141,6 @@ function addPostIt (isInit, postText)
   div.className = "col-centered col-fixed postIt";
   div.contentEditable = 'false';
 
-  //div.width = 300;
-  //div.height = 300;
-  
   //Log the id of the newly created div to the console
   console.log("Here logging the div ID: " + div.id);
   console.log(div.className);
@@ -162,12 +150,6 @@ function addPostIt (isInit, postText)
   //Add the div to the body and within the parent canvas div
   //document.body.appendChild(div); // adds the canvas to the body element
   document.getElementById(dcID).appendChild(div);
-
-  //div.addEventListener("click", function (e) { selectDiv(div.id); });
-
-
-
-  //div.innerHTML = div.innerHTML + postMessage;
 
   var t=document.createTextNode(postMessage);
   div.appendChild(t);
@@ -179,7 +161,6 @@ function addPostIt (isInit, postText)
   button.innerHTML ='Edit';
   button.addEventListener("click", function (e) { selectDiv(div.id, button.id); });
   dContainer.appendChild(button);
-
   
   //Add the delete button
   var dButton=document.createElement('button');
@@ -191,9 +172,6 @@ function addPostIt (isInit, postText)
 
   //Clear the value of the input field
   document.getElementById("someInput").value = '';
-  
-  
-
 }
 
 function addItem(isInit, postText)

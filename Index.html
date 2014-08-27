@@ -6,6 +6,36 @@
     <!-- <link rel="stylesheet" typle="text/css" href="css/bootstrap.css"> -->
   </head>
 <body>
+    <div id="fb-root"></div>
+     <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '{821945741172950}',
+          xfbml      : true,
+          version    : 'v2.0'
+        });
+
+        FB.getLoginStatus(function(response) {
+          if (response.status === 'connected') {
+            console.log('Logged in.');
+          }
+          else {
+             FB.login();
+          }
+        });
+
+
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+
     <div ng-controller="PostItController"> <!-- ng-controller="PostItController"> -->
       <div class = "row row-centered">
         <label class= "labelClass">PostIt:</label>
@@ -14,8 +44,11 @@
         <button type="button" id="postButton" onClick="addPostIt();">Post!</button>
         <!-- <button type="button" onClick="addPostIt();">Add PostIt</button> -->
         <!-- angular binding <h2 class = "text-center">Your PostIt message is: {{ PostIt }}</h2> -->
+
         
       </div>
+      <hr>
+      <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
       <hr>
       
       <!-- The PostIt message you're currently entering! -->
