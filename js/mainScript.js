@@ -1,7 +1,7 @@
 
 var app = angular.module('postItApp', []);
 
-var idNum = 0;
+var idNum;
 
 app.controller('PostItController', function($scope) {
   
@@ -82,7 +82,7 @@ function selectDiv(divID, buttonID)
       userTable.update(postIts[0]);
     });
     //Check if this is the last post it and if so add another one
-    var lastDiv = "div" + (idNum-1);
+    var lastDiv = "div" + (idNum);
     console.log(lastDiv);
     if(divID == lastDiv)
     {
@@ -98,7 +98,7 @@ function selectDiv(divID, buttonID)
 function deleteDiv(divID, dcID, buttonID) {
   console.log("deleting div");
 
-  var lastDiv = "div" + (idNum-1);
+  var lastDiv = "div" + (idNum);
   if(divID != lastDiv)
   {
     var query = userTable;
@@ -119,8 +119,9 @@ function addPostIt (isInit, postText)
 
   if(!isInit) {
       var postMessage = document.getElementById("someInput").value
+      idNum++;
       var pid = "div" + idNum;
-      var item = { PostItNote: document.getElementById("someInput").value, PID: pid};
+      var item = { PostItNote: document.getElementById("someInput").value, PID: pid, divnum: idNum};
       userTable.insert(item);
   }
   else{
@@ -153,7 +154,7 @@ function addPostIt (isInit, postText)
   //div.height = 300;
   
   //Log the id of the newly created div to the console
-  console.log(div.id);
+  console.log("Here logging the div ID: " + div.id);
   console.log(div.className);
 
   div.style.backgroundColor = '#FFFF99';
@@ -191,7 +192,7 @@ function addPostIt (isInit, postText)
   //Clear the value of the input field
   document.getElementById("someInput").value = '';
   
-  idNum++;
+  
 
 }
 
@@ -313,10 +314,23 @@ function getPostIts(){
   console.log("GOT POST PostITs");
   //console.log("type of element: "+element);
   //Retrieve the post it's in LIFO order
+  idNum = 0;
+
   query.read().then(function (postIts) {
     for (var i = 0; i < postIts.length; i++) {
-    console.log(postIts[i].PostItNote);
-    addPostIt(true, postIts[i].PostItNote);
+      console.log(postIts[i].PostItNote);
+      console.log(postIts[i].divnum);
+      idNum = postIts[i].divnum;
+      addPostIt(true, postIts[i].PostItNote);
+
+      //if(postIts[i].divnum > idNum) {
+        
+      //}
+    }
+    console.log("here --------------");
+    console.log("---------------THis is the lenght of postit's: " + postIts.length);
+    if(postIts.length == 0) {
+      addPostIt(false,"");
     }
   });
 }
