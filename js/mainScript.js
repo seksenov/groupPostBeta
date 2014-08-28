@@ -383,6 +383,7 @@ function getPostIts(){
     for (var i = 0; i < postIts.length; i++) {
       console.log(postIts[i].PostItNote);
       console.log(postIts[i].divnum);
+      console.log(postIts[i].uid);
       idNum = postIts[i].divnum;
       addPostIt(true, postIts[i].PostItNote);
 
