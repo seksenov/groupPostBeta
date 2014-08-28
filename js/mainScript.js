@@ -18,8 +18,7 @@ var client = new WindowsAzure.MobileServiceClient(
 var userTable=null;
 userTable=client.getTable("userTable");
 
-//Get all the post it's from the DB and display them on the page
-getPostIts();
+
 
 //do the FB init stuff
 //function checkLoginState() {
@@ -61,6 +60,9 @@ window.fbAsyncInit = function() {
   console.log("Yo! ------------------ about to get the uid");
 
   FBuid();
+
+  //Get all the post it's from the DB and display them on the page
+  getPostIts();
 
   };
 
@@ -159,7 +161,7 @@ function selectDiv(divID, buttonID)
   else{
     //Update the PostIt note in the DB
     var query = userTable;
-    query.where({ PID: divID }).read().then(function (postIts) {
+    query.where({ PID: divID, uid: userID }).read().then(function (postIts) {
       console.log(postIts[0].PostItNote);
       postIts[0].PostItNote = div.innerHTML;
       userTable.update(postIts[0]);
@@ -185,7 +187,7 @@ function deleteDiv(divID, dcID, buttonID) {
   if(divID != lastDiv)
   {
     var query = userTable;
-     query.where({ PID: divID }).read().then(function (postIts) {
+     query.where({ PID: divID, uid: userID }).read().then(function (postIts) {
       console.log(postIts[0].PostItNote);
       console.log(postIts[0].id);
       userTable.del(postIts[0]);
@@ -377,7 +379,7 @@ function getPostIts(){
   //Retrieve the post it's in LIFO order
   idNum = 0;
 
-  query.read().then(function (postIts) {
+  query.where({ uid: userID }).read().then(function (postIts) {
     for (var i = 0; i < postIts.length; i++) {
       console.log(postIts[i].PostItNote);
       console.log(postIts[i].divnum);
