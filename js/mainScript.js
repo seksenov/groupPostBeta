@@ -30,7 +30,7 @@ getPostIts();
 
 window.fbAsyncInit = function() {
 
-  
+  console.log("Yo! ------------------ initializing FB");
 
   FB.init({
     appId      : '821945741172950',
@@ -58,7 +58,7 @@ window.fbAsyncInit = function() {
   //  statusChangeCallback(response);
   //});
 
-  Console.log("Yo! ------------------ about to get the uid");
+  console.log("Yo! ------------------ about to get the uid");
 
   FBuid();
 
