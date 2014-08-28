@@ -203,7 +203,7 @@ function addPostIt (isInit, postText){
       var postMessage = document.getElementById("someInput").value
       idNum++;
       var pid = "div" + idNum;
-      var item = { PostItNote: document.getElementById("someInput").value, PID: pid, divnum: idNum};
+      var item = { PostItNote: document.getElementById("someInput").value, PID: pid, divnum: idNum, uid: userID};
       userTable.insert(item);
   }
   else{
