@@ -53,6 +53,20 @@ function FBLogout() {
         console.log("Person is now logged out");
   });
 }
+
+function FBuid() {
+  FB.getLoginStatus(function(response) {
+    if (response.status === 'connected') {
+      var uid = response.authResponse.userID;
+      console.log('Logged in.');
+      console.log('The user id is: ' + uid);
+    }
+    else {
+      //FB.login();
+      console.log('Not logged in');
+    }
+  });
+}
 /*
 $(document).on('click', 'div', function () {
     alert(this.id);
@@ -76,6 +90,7 @@ function selectDiv(divID, buttonID)
     cursorManager.setEndOfContenteditable(div);
     div.focus();
     button.innerHTML = 'Post';
+    FBuid();
   }
   //This is what gets executed when the post button is hit
   else{
