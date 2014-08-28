@@ -58,7 +58,7 @@ window.fbAsyncInit = function() {
   //  statusChangeCallback(response);
   //});
 
-  onsole.log("Yo! ------------------ about to get the uid");
+  Console.log("Yo! ------------------ about to get the uid");
 
   FBuid();
 
