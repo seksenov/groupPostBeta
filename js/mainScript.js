@@ -49,9 +49,9 @@ function checkLoginState() {
   //
   // These three cases are handled in the callback function.
 
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
+  //FB.getLoginStatus(function(response) {
+  //  statusChangeCallback(response);
+  //});
 
   };
 
@@ -63,7 +63,7 @@ function checkLoginState() {
     js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
-  
+
 //Get the user FB uid of the person logged in
 FBuid();
 
