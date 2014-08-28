@@ -21,6 +21,22 @@ userTable=client.getTable("userTable");
 //Get all the post it's from the DB and display them on the page
 getPostIts();
 
+//do the FB init stuff
+function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '821945741172950',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.1' // use version 2.1
+  });
+
 //Get the user FB uid of the person logged in
 FBuid();
 
