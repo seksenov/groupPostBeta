@@ -28,7 +28,10 @@ function checkLoginState() {
     });
   }
 
-  window.fbAsyncInit = function() {
+window.fbAsyncInit = function() {
+
+  console.log("Yo! ------------------ FB initializing in dat main script");
+
   FB.init({
     appId      : '821945741172950',
     cookie     : true,  // enable cookies to allow the server to access 
@@ -105,6 +108,10 @@ function FBLogout() {
 }
 
 function FBuid() {
+
+
+
+
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
       userID = response.authResponse.userID;
