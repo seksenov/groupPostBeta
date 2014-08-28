@@ -3,6 +3,8 @@ var app = angular.module('postItApp', []);
 
 var idNum;
 
+var userID;
+
 app.controller('PostItController', function($scope) {
   
 });
@@ -51,15 +53,16 @@ function selectCanvas(canvasID)
 function FBLogout() {
   FB.logout(function(response) {
         console.log("Person is now logged out");
+        window.location.href = "Index.html";
   });
 }
 
 function FBuid() {
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
-      var uid = response.authResponse.userID;
+      userID = response.authResponse.userID;
       console.log('Logged in.');
-      console.log('The user id is: ' + uid);
+      console.log('The user id is: ' + userID);
     }
     else {
       //FB.login();
