@@ -82,7 +82,9 @@
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
+      console.log("executing redirect");
       window.location.href = "postBoard.html";
+      console.log("done with redirect");
     });
   }
 </script>
