@@ -21,6 +21,9 @@ userTable=client.getTable("userTable");
 //Get all the post it's from the DB and display them on the page
 getPostIts();
 
+//Get the user FB uid of the person logged in
+FBuid();
+
 //var item = { text: "1: This is Static" };
 //client.getTable("Item").insert(item);
 
@@ -54,6 +57,7 @@ function FBLogout() {
   FB.logout(function(response) {
         console.log("Person is now logged out");
         window.location.href = "Index.html";
+        console.log("They should also be redirected");
   });
 }
 
