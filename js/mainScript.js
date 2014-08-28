@@ -61,8 +61,7 @@ window.fbAsyncInit = function() {
 
   FBuid();
 
-  //Get all the post it's from the DB and display them on the page
-  getPostIts();
+  
 
   };
 
@@ -125,6 +124,8 @@ function FBuid() {
       userID = response.authResponse.userID;
       console.log('Logged in.');
       console.log('The user id is: ' + userID);
+      //Get all the post it's from the DB and display them on the page
+      getPostIts();
     }
     else {
       //FB.login();
