@@ -130,6 +130,7 @@ function FBuid() {
     else {
       //FB.login();
       console.log('Not logged in');
+      window.location.href = "Index.html";
     }
   });
 }
