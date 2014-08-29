@@ -116,9 +116,6 @@ function FBLogout() {
 
 function FBuid() {
 
-
-
-
   FB.getLoginStatus(function(response) {
     if (response.status === 'connected') {
       userID = response.authResponse.userID;
