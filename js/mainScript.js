@@ -156,7 +156,7 @@ function selectDiv(divID, buttonID)
     cursorManager.setEndOfContenteditable(div);
     div.focus();
     button.innerHTML = 'Post';
-    FBuid();
+    //FBuid();
   }
   //This is what gets executed when the post button is hit
   else{
@@ -169,7 +169,7 @@ function selectDiv(divID, buttonID)
     });
     //Check if this is the last post it and if so add another one
     var lastDiv = "div" + (idNum);
-    console.log(lastDiv);
+    console.log("This is the last div: " + lastDiv);
     if(divID == lastDiv)
     {
       addPostIt(false, "");
