@@ -201,10 +201,10 @@ function deleteDiv(divID, dcID, buttonID) {
 function addPostIt (isInit, postText){
 
   if(!isInit) {
-      var postMessage = document.getElementById("someInput").value
+      var postMessage = postText;
       idNum++;
       var pid = "div" + idNum;
-      var item = { PostItNote: document.getElementById("someInput").value, PID: pid, divnum: idNum, uid: userID};
+      var item = { PostItNote: postText, PID: pid, divnum: idNum, uid: userID};
       userTable.insert(item);
   }
   else{
@@ -255,7 +255,7 @@ function addPostIt (isInit, postText){
   dContainer.appendChild(dButton);
 
   //Clear the value of the input field
-  document.getElementById("someInput").value = '';
+  //document.getElementById("someInput").value = '';
 }
 
 function addItem(isInit, postText)
@@ -380,6 +380,7 @@ function getPostIts(){
 
   query.where({ uid: userID }).read().then(function (postIts) {
     console.log("Yo the number of PostITs is: " + postIts.length);
+    
     for (var i = 0; i < postIts.length; i++) {
       console.log(postIts[i].PostItNote);
       console.log(postIts[i].divnum);
