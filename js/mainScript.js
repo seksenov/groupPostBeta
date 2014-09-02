@@ -373,18 +373,21 @@ $("#someInput").keyup(function(event){
 //Read the DB and pull old PostITs
 function getPostIts(){ 
   var query = userTable; //Give it column name
-  console.log("GOT POST PostITs");
+  console.log("Retrieving POST PostITs");
   //console.log("type of element: "+element);
   //Retrieve the post it's in LIFO order
   idNum = 0;
 
   query.where({ uid: userID }).read().then(function (postIts) {
+    console.log("Yo the number of PostITs is: " + postIts.length);
     for (var i = 0; i < postIts.length; i++) {
       console.log(postIts[i].PostItNote);
       console.log(postIts[i].divnum);
       console.log(postIts[i].uid);
       idNum = postIts[i].divnum;
       addPostIt(true, postIts[i].PostItNote);
+
+      console.log("Running through the loop!!");
 
       //if(postIts[i].divnum > idNum) {
         
@@ -395,7 +398,10 @@ function getPostIts(){
     if(postIts.length == 0) {
       addPostIt(false,"");
     }
+    console.log("Got past the if.....................");
   });
+
+  console.log("FINISHED GETTING PostIts");
 }
 
 //Namespace management idea from http://enterprisejquery.com/2010/10/how-good-c-habits-can-encourage-bad-javascript-habits-part-1/
