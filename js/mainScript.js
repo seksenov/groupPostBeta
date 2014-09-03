@@ -147,12 +147,15 @@ function selectDiv(divID, buttonID)
   console.log(backColor);
   console.log(initialColor);
   console.log(div.contentEditable);
-
+  //Set the div to editable
   if (div.contentEditable === 'false'){
     div.style.backgroundColor = '#FFFF00';
     div.contentEditable = 'true';
     cursorManager.setEndOfContenteditable(div);
     div.focus();
+    editable.on('input', function() {
+      return filter_newlines(div);
+    });
     button.innerHTML = 'Post';
     //FBuid();
   }
@@ -404,6 +407,32 @@ function getPostIts(){
 
   console.log("FINISHED GETTING PostIts");
 }
+
+//The text does not overflow out of the div
+function filter_newlines(div) {
+    var node, prev, _i, _len, _ref, _results;
+    prev = null;
+    _ref = div.contents();
+    _results = [];
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      node = _ref[_i];
+      if (node.nodeType === 3) {
+        node.nodeValue = node.nodeValue.replace('\n', '');
+        if (prev) {
+          node.nodeValue = prev.nodeValue + node.nodeValue;
+          $(prev).remove();
+        }
+        _results.push(prev = node);
+      } else if (node.tagName.toLowerCase() === 'br') {
+        _results.push($(node).remove());
+      } else {
+        $(node).css('display', 'inline');
+        filter_newlines($(node));
+        _results.push(prev = null);
+      }
+    }
+    return _results;
+  }
 
 //Namespace management idea from http://enterprisejquery.com/2010/10/how-good-c-habits-can-encourage-bad-javascript-habits-part-1/
 (function( cursorManager ) {
