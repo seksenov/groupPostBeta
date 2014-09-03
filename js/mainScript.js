@@ -153,9 +153,9 @@ function selectDiv(divID, buttonID)
     div.contentEditable = 'true';
     cursorManager.setEndOfContenteditable(div);
     div.focus();
-    //editable.on('input', function() {
-      //return filter_newlines(div);
-    //});
+    div.on('input', function() {
+      return filter_newlines(div);
+    });
     button.innerHTML = 'Post';
     //FBuid();
   }
