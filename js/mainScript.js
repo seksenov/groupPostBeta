@@ -179,7 +179,7 @@ function selectDiv(divID, buttonID)
     //editable.on('input', function() {
     //  return filter_newlines(div);
     //});
-    filter_newlines(div);
+    filter_newlines(divID);
     div.style.backgroundColor = '#FFFF99';
     div.contentEditable = 'false'; 
     button.innerHTML = 'Edit';
@@ -413,7 +413,10 @@ function getPostIts(){
 }
 
 //The text does not overflow out of the div
-function filter_newlines(div) {
+function filter_newlines(divID) {
+    var divString = '#' + divID;
+    var div = $(divString);
+
     var node, prev, _i, _len, _ref, _results;
     prev = null;
     _ref = div.contents();
