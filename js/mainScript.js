@@ -179,7 +179,7 @@ function selectDiv(divID, buttonID)
     //editable.on('input', function() {
     //  return filter_newlines(div);
     //});
-    filter_newlines($('#'+divID));
+    filter_newlines(div);
     div.style.backgroundColor = '#FFFF99';
     div.contentEditable = 'false'; 
     button.innerHTML = 'Edit';
