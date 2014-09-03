@@ -153,9 +153,9 @@ function selectDiv(divID, buttonID)
     div.contentEditable = 'true';
     cursorManager.setEndOfContenteditable(div);
     div.focus();
-    editable.on('input', function() {
-      return filter_newlines(div);
-    });
+    //editable.on('input', function() {
+      //return filter_newlines(div);
+    //});
     button.innerHTML = 'Post';
     //FBuid();
   }
@@ -176,9 +176,9 @@ function selectDiv(divID, buttonID)
       addPostIt(false, "");
     }
 
-    editable.on('input', function() {
-      return filter_newlines(div);
-    });
+    //editable.on('input', function() {
+    //  return filter_newlines(div);
+    //});
     div.style.backgroundColor = '#FFFF99';
     div.contentEditable = 'false'; 
     button.innerHTML = 'Edit';
