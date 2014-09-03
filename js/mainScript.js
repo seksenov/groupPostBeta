@@ -176,6 +176,9 @@ function selectDiv(divID, buttonID)
       addPostIt(false, "");
     }
 
+    editable.on('input', function() {
+      return filter_newlines(div);
+    });
     div.style.backgroundColor = '#FFFF99';
     div.contentEditable = 'false'; 
     button.innerHTML = 'Edit';
