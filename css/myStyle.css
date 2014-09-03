@@ -55,12 +55,17 @@ canvas {
     background-color: #FFFF99;
 }
 
+@font-face {
+  font-family: "PostItFont";
+  src: local("fonts/Post_Note.ttf") format("truetype");
+}
+
 
 .postIt {
     height: 300px;
     width: 300px;
     font-weight: bold;
-    font-family: "Comic Sans MS";
+    font-family: "PostItFont";
     margin-right: 5px;
     margin-left: 5px;
     margin-bottom: 5px;
