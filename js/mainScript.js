@@ -153,9 +153,9 @@ function selectDiv(divID, buttonID)
     div.contentEditable = 'true';
     cursorManager.setEndOfContenteditable(div);
     div.focus();
-    div.on('input', function() {
-      return filter_newlines(div);
-    });
+    //div.on('input', function() {
+     // return filter_newlines(div);
+    //});
     button.innerHTML = 'Post';
     //FBuid();
   }
@@ -179,6 +179,7 @@ function selectDiv(divID, buttonID)
     //editable.on('input', function() {
     //  return filter_newlines(div);
     //});
+    filter_newlines(div);
     div.style.backgroundColor = '#FFFF99';
     div.contentEditable = 'false'; 
     button.innerHTML = 'Edit';
