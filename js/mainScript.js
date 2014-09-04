@@ -199,7 +199,13 @@ function deleteDiv(divID, dcID, buttonID) {
       userTable.del(postIts[0]);
      });
 
-     $('#' + dcID).remove();
+     element = $('#' + dcID);
+
+      element.addClass('animated ' + animation);        
+      //wait for animation to finish before removing classes
+      window.setTimeout( function(){element.removeClass('animated ' + animation);}, 2000);         
+      
+      $('#' + dcID).remove();
   }
 
 
