@@ -79,7 +79,8 @@ canvas {
     /*background-color: #FFFF99;*/
     float: left;
     vertical-align:text-top;
-    font-size: 35px;
+    font-size: 45px;
+    word-wrap: break-word;
     
 }
 
