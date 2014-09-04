@@ -203,7 +203,7 @@ function deleteDiv(divID, dcID, buttonID) {
 
       //element.addClass('fadeOut');        
       //wait for animation to finish before removing classes
-      $('#' + dcID).removeClass().addClass('fadeOut');      
+      $('#' + dcID).removeClass().addClass('animated fadeOut');      
       
       $('#' + dcID).remove();
   }
