@@ -199,11 +199,11 @@ function deleteDiv(divID, dcID, buttonID) {
       userTable.del(postIts[0]);
      });
 
-     element = $('#' + dcID);
+     //element = $('#' + dcID);
 
-      element.addClass('fadeOut');        
+      //element.addClass('fadeOut');        
       //wait for animation to finish before removing classes
-      window.setTimeout( function(){element.removeClass('fadeOut');}, 2000);         
+      $('#' + dcID).removeClass().addClass('fadeOut');      
       
       $('#' + dcID).remove();
   }
