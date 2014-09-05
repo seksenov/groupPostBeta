@@ -407,7 +407,7 @@ function getPostIts(){
       console.log(postIts[i].divnum);
       console.log(postIts[i].uid);
       idNum = postIts[i].divnum;
-      if(postIts[i].PostItNote = '') {
+      if(postIts[i].PostItNote == '') {
         //TODO: add args for last post
         addPostIt(false, '');
       }
