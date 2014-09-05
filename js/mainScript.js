@@ -156,6 +156,7 @@ function selectDiv(divID, buttonID, isPlus)
     
     //PLus Post it note
     if(isPlus) {
+      var dContainer = $('#'+ buttonID).parent();
       $('#' + buttonID).remove();
       //Add a Post button
       //Add the edit button
@@ -165,7 +166,7 @@ function selectDiv(divID, buttonID, isPlus)
       newButton.innerHTML ='Post';
       //TODO add oneplus arg
       button.addEventListener("click", function (e) { selectDiv(div.id, newButton.id, false); });
-      $('#'+divID).parent().appendChild(newButton);
+      dContainer.appendChild(newButton);
     }
     else {
       //Add the Post button
