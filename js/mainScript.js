@@ -165,7 +165,7 @@ function selectDiv(divID, buttonID, isPlus)
       newButton.innerHTML ='Post';
       //TODO add oneplus arg
       button.addEventListener("click", function (e) { selectDiv(div.id, newButton.id, false); });
-      dContainer.appendChild(newButton);
+      $('#'+divID).parent().appendChild(newButton);
     }
     else {
       //Add the Post button
