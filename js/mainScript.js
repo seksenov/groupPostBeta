@@ -207,6 +207,15 @@ function deleteDiv(divID, dcID, buttonID) {
         $('#' + dcID).remove();
       });
   }
+  else {
+    $('#' + dcID).addClass('animated bounce');   
+      // wait for animation end
+      $('#' + dcID).one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
+      function(e) {
+        // code to execute after transition ends
+        $('#' + dcID).removeClass('animated bounce');
+      });
+  }
 }
 
 function addPostIt (isInit, postText){
