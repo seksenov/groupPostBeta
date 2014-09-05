@@ -156,21 +156,26 @@ function selectDiv(divID, buttonID, isPlus, dcID)
     
     //PLus Post it note
     if(isPlus) {
-      //var dContainer = $('#'+ buttonID).closest();
-      //console.log("Thsi is what .parent() returns: " + $('#'+ buttonID).parent());
 
       $('#' + buttonID).remove();
       //Add a Post button
-      //Add the edit button
       var newButton=document.createElement('button');
       newButton.id = buttonID;
       newButton.className = 'editButton';
       newButton.innerHTML ='Post';
-      //TODO add oneplus arg
       newButton.addEventListener("click", function (e) { selectDiv(div.id, newButton.id, false, dcID); });
       console.log("This is dcID: " + dcID);
       console.log("This is the id of the container: " + $('#'+ dcID).id);
       $('#'+ dcID).append(newButton);
+      
+      //Add the delete button
+      var dButton=document.createElement('button');
+      dButton.id = "deleteB" + buttonID;
+      dButton.className = 'deleteButton';
+      dButton.innerHTML ='Delete';
+      dButton.addEventListener("click", function (e) { deleteDiv(div.id, dcID, dButton.id); });
+      $('#'+ dcID).append(dButton);
+
     }
     else {
       //Add the Post button
@@ -304,7 +309,7 @@ function addPostIt (isInit, postText, plusOne){
     dButton.id = "deleteB" + idNum;
     dButton.className = 'deleteButton';
     dButton.innerHTML ='Delete';
-    dButton.addEventListener("click", function (e) { deleteDiv(div.id, dcID, dButton.id, false, dcID); });
+    dButton.addEventListener("click", function (e) { deleteDiv(div.id, dcID, dButton.id); });
     dContainer.appendChild(dButton);
   }
 
