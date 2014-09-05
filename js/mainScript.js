@@ -137,7 +137,7 @@ $(document).on('click', 'div', function () {
 });
 */
 
-function selectDiv(divID, buttonID, isPlus)
+function selectDiv(divID, buttonID, isPlus, dcID)
 {
   var initialColor = 'rgb(255, 255, 153)';
   var div = document.getElementById(divID);
@@ -156,8 +156,8 @@ function selectDiv(divID, buttonID, isPlus)
     
     //PLus Post it note
     if(isPlus) {
-      var dContainer = $('#'+ buttonID).closest();
-      console.log("Thsi is what .parent() returns: " + $('#'+ buttonID).parent());
+      //var dContainer = $('#'+ buttonID).closest();
+      //console.log("Thsi is what .parent() returns: " + $('#'+ buttonID).parent());
 
       $('#' + buttonID).remove();
       //Add a Post button
@@ -168,8 +168,8 @@ function selectDiv(divID, buttonID, isPlus)
       newButton.innerHTML ='Post';
       //TODO add oneplus arg
       button.addEventListener("click", function (e) { selectDiv(div.id, newButton.id, false); });
-      console.log("This is the id of the container: " + dContainer.id);
-      dContainer.appendChild(newButton);
+      console.log("This is the id of the container: " + $('#'+ dcID).id);
+      $('#'+ dcID).appendChild(newButton);
     }
     else {
       //Add the Post button
@@ -285,7 +285,7 @@ function addPostIt (isInit, postText, plusOne){
     plus.type = "image";
     plus.className = "plusButton"
     //TODO add oneplue arg
-    plus.addEventListener("click", function (e) { selectDiv(div.id, plus.id, true); });
+    plus.addEventListener("click", function (e) { selectDiv(div.id, plus.id, true, dcID); });
     dContainer.appendChild(plus);
   }
   else {
@@ -295,7 +295,7 @@ function addPostIt (isInit, postText, plusOne){
     button.className = 'editButton';
     button.innerHTML ='Edit';
     //TODO add oneplus arg
-    button.addEventListener("click", function (e) { selectDiv(div.id, button.id, false); });
+    button.addEventListener("click", function (e) { selectDiv(div.id, button.id, false, dcID); });
     dContainer.appendChild(button);
 
     //Add the delete button
@@ -303,7 +303,7 @@ function addPostIt (isInit, postText, plusOne){
     dButton.id = "deleteB" + idNum;
     dButton.className = 'deleteButton';
     dButton.innerHTML ='Delete';
-    dButton.addEventListener("click", function (e) { deleteDiv(div.id, dcID, dButton.id, false); });
+    dButton.addEventListener("click", function (e) { deleteDiv(div.id, dcID, dButton.id, false, dcID); });
     dContainer.appendChild(dButton);
   }
 
