@@ -203,7 +203,14 @@ function deleteDiv(divID, dcID, buttonID) {
 
       //element.addClass('fadeOut');        
       //wait for animation to finish before removing classes
-      $('#' + dcID).addClass('animated bounceOut');      
+      $('#' + dcID).addClass('animated bounceOut');   
+
+      $('#' + dcID).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',   
+      function(e) {
+        // code to execute after transition ends
+        $('#' + dcID).remove();
+      });
+   
       
       //$('#' + dcID).remove();
   }
