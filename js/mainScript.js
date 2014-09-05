@@ -167,7 +167,7 @@ function selectDiv(divID, buttonID, isPlus, dcID)
       newButton.className = 'editButton';
       newButton.innerHTML ='Post';
       //TODO add oneplus arg
-      button.addEventListener("click", function (e) { selectDiv(div.id, newButton.id, false); });
+      newButton.addEventListener("click", function (e) { selectDiv(div.id, newButton.id, false, dcID); });
       console.log("This is dcID: " + dcID);
       console.log("This is the id of the container: " + $('#'+ dcID).id);
       $('#'+ dcID).append(newButton);
