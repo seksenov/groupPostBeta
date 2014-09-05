@@ -199,7 +199,7 @@ function deleteDiv(divID, dcID, buttonID) {
       userTable.del(postIts[0]);
      });
 
-      $('#' + dcID).addClass('animated rollOut');   
+      $('#' + dcID).addClass('animated zoomOutLeft');   
       // wait for animation end
       $('#' + dcID).one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
       function(e) {
