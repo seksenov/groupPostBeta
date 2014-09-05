@@ -199,23 +199,14 @@ function deleteDiv(divID, dcID, buttonID) {
       userTable.del(postIts[0]);
      });
 
-     //element = $('#' + dcID);
-
-      //element.addClass('fadeOut');        
-      //wait for animation to finish before removing classes
-      $('#' + dcID).addClass('animated bounceOut');   
-
+      $('#' + dcID).addClass('animated rollOut');   
+      // wait for animation end
       $('#' + dcID).one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
       function(e) {
         // code to execute after transition ends
         $('#' + dcID).remove();
       });
-   
-      
-      //$('#' + dcID).remove();
   }
-
-
 }
 
 function addPostIt (isInit, postText){
