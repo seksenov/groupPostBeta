@@ -173,6 +173,7 @@ function selectDiv(divID, buttonID)
     console.log("This is the last div: " + lastDiv);
     if(divID == lastDiv)
     {
+      //TODO add a new post arg
       addPostIt(false, "");
     }
 
@@ -406,7 +407,14 @@ function getPostIts(){
       console.log(postIts[i].divnum);
       console.log(postIts[i].uid);
       idNum = postIts[i].divnum;
-      addPostIt(true, postIts[i].PostItNote);
+      if(postIts[i].PostItNote = '') {
+        //TODO: add args for last post
+        addPostIt(false, '');
+      }
+      else {
+        addPostIt(true, postIts[i].PostItNote);
+      }
+      
 
       console.log("Running through the loop!!");
 
@@ -417,6 +425,7 @@ function getPostIts(){
     console.log("here --------------");
     console.log("---------------THis is the lenght of postit's: " + postIts.length);
     if(postIts.length == 0) {
+      //TODO add args for last post
       addPostIt(false,"");
     }
     console.log("Got past the if.....................");
