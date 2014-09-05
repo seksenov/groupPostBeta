@@ -137,7 +137,7 @@ $(document).on('click', 'div', function () {
 });
 */
 
-function selectDiv(divID, buttonID)
+function selectDiv(divID, buttonID, isPlus)
 {
   var initialColor = 'rgb(255, 255, 153)';
   var div = document.getElementById(divID);
@@ -153,11 +153,25 @@ function selectDiv(divID, buttonID)
     div.contentEditable = 'true';
     cursorManager.setEndOfContenteditable(div);
     div.focus();
-    //div.on('input', function() {
-     // return filter_newlines(div);
-    //});
-    button.innerHTML = 'Post';
-    //FBuid();
+    
+    //PLus Post it note
+    if(isPlus) {
+      $('#' + buttonID).remove();
+      //Add a Post button
+      //Add the edit button
+      var newButton=document.createElement('button');
+      newButton.id = buttonID;
+      newButton.className = 'editButton';
+      newButton.innerHTML ='Post';
+      //TODO add oneplus arg
+      button.addEventListener("click", function (e) { selectDiv(div.id, newButton.id, false); });
+      dContainer.appendChild(newButton);
+    }
+    else {
+      //Add the Post button
+      button.innerHTML = 'Post';
+    }
+
   }
   //This is what gets executed when the post button is hit
   else{
@@ -261,11 +275,13 @@ function addPostIt (isInit, postText, plusOne){
 
   
   if(plusOne) {
-    var plus = document.createElement("input"); 
+    var plus = document.createElement("input");
+    plus.id = "editB" + idNum; 
     plus.src = "images/AddNote.png"; 
     plus.type = "image";
     plus.className = "plusButton"
-    plus.addEventListener("click", function (e) { selectDiv(div.id, plus.id); });
+    //TODO add oneplue arg
+    plus.addEventListener("click", function (e) { selectDiv(div.id, plus.id, true); });
     dContainer.appendChild(plus);
   }
   else {
@@ -274,19 +290,18 @@ function addPostIt (isInit, postText, plusOne){
     button.id = "editB" + idNum;
     button.className = 'editButton';
     button.innerHTML ='Edit';
-    button.addEventListener("click", function (e) { selectDiv(div.id, button.id); });
+    //TODO add oneplus arg
+    button.addEventListener("click", function (e) { selectDiv(div.id, button.id, false); });
     dContainer.appendChild(button);
-  }
 
-  
-  
-  //Add the delete button
-  var dButton=document.createElement('button');
-  dButton.id = "deleteB" + idNum;
-  dButton.className = 'deleteButton';
-  dButton.innerHTML ='Delete';
-  dButton.addEventListener("click", function (e) { deleteDiv(div.id, dcID, dButton.id); });
-  dContainer.appendChild(dButton);
+    //Add the delete button
+    var dButton=document.createElement('button');
+    dButton.id = "deleteB" + idNum;
+    dButton.className = 'deleteButton';
+    dButton.innerHTML ='Delete';
+    dButton.addEventListener("click", function (e) { deleteDiv(div.id, dcID, dButton.id, false); });
+    dContainer.appendChild(dButton);
+  }
 
   //Clear the value of the input field
   //document.getElementById("someInput").value = '';
