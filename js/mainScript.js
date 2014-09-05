@@ -409,7 +409,7 @@ function getPostIts(){
       idNum = postIts[i].divnum;
       if(postIts[i].PostItNote == '') {
         //TODO: add args for last post
-        addPostIt(false, '');
+        addPostIt(true, '');
       }
       else {
         addPostIt(true, postIts[i].PostItNote);
