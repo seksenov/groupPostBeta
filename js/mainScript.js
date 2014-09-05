@@ -156,7 +156,9 @@ function selectDiv(divID, buttonID, isPlus)
     
     //PLus Post it note
     if(isPlus) {
-      var dContainer = $('#'+ buttonID).parent();
+      var dContainer = $('#'+ buttonID).closest();
+      console.log("Thsi is what .parent() returns: " + $('#'+ buttonID).parent());
+
       $('#' + buttonID).remove();
       //Add a Post button
       //Add the edit button
