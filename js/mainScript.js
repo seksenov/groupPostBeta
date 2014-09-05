@@ -205,7 +205,7 @@ function deleteDiv(divID, dcID, buttonID) {
       //wait for animation to finish before removing classes
       $('#' + dcID).addClass('animated bounceOut');   
 
-      $('#' + dcID).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',   
+      $('#' + dcID).one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
       function(e) {
         // code to execute after transition ends
         $('#' + dcID).remove();
