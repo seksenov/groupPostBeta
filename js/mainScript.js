@@ -174,7 +174,7 @@ function selectDiv(divID, buttonID)
     if(divID == lastDiv)
     {
       //TODO add a new post arg
-      addPostIt(false, "");
+      addPostIt(false, "", true);
     }
 
     //editable.on('input', function() {
@@ -219,7 +219,7 @@ function deleteDiv(divID, dcID, buttonID) {
   }
 }
 
-function addPostIt (isInit, postText){
+function addPostIt (isInit, postText, plusOne){
 
   if(!isInit) {
       var postMessage = postText;
@@ -259,13 +259,22 @@ function addPostIt (isInit, postText){
   var t=document.createTextNode(postMessage);
   div.appendChild(t);
 
-  //Add the edit button
   var button=document.createElement('button');
   button.id = "editB" + idNum;
-  button.className = 'editButton';
-  button.innerHTML ='Edit';
+  if(plusOne) {
+    button.className = 'addButton';
+    button.src = 'images/AddNote.png';
+  }
+  else {
+    //Add the edit button
+    button.className = 'editButton';
+    button.innerHTML ='Edit';
+    
+  }
   button.addEventListener("click", function (e) { selectDiv(div.id, button.id); });
   dContainer.appendChild(button);
+
+  
   
   //Add the delete button
   var dButton=document.createElement('button');
@@ -409,10 +418,10 @@ function getPostIts(){
       idNum = postIts[i].divnum;
       if(postIts[i].PostItNote == '') {
         //TODO: add args for last post
-        addPostIt(true, '');
+        addPostIt(true, '', true);
       }
       else {
-        addPostIt(true, postIts[i].PostItNote);
+        addPostIt(true, postIts[i].PostItNote, false);
       }
       
 
@@ -426,7 +435,7 @@ function getPostIts(){
     console.log("---------------THis is the lenght of postit's: " + postIts.length);
     if(postIts.length == 0) {
       //TODO add args for last post
-      addPostIt(false,"");
+      addPostIt(false,"",true);
     }
     console.log("Got past the if.....................");
   });
