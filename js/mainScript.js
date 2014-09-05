@@ -264,6 +264,7 @@ function addPostIt (isInit, postText, plusOne){
     var plus = document.createElement("input"); 
     plus.src = "images/AddNote.png"; 
     plus.type = "image";
+    plus.addEventListener("click", function (e) { selectDiv(div.id, button.id); });
     dContainer.appendChild(plus);
   }
   else {
