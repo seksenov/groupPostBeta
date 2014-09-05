@@ -259,20 +259,22 @@ function addPostIt (isInit, postText, plusOne){
   var t=document.createTextNode(postMessage);
   div.appendChild(t);
 
-  var button=document.createElement('button');
-  button.id = "editB" + idNum;
+  
   if(plusOne) {
-    button.className = 'addButton';
-    button.src = 'images/AddNote.png';
+    var plus = document.createElement("input"); 
+    plus.src = "images/AddNote.png"; 
+    plus.type = "image";
+    dContainer.appendChild(plus);
   }
   else {
     //Add the edit button
+    var button=document.createElement('button');
+    button.id = "editB" + idNum;
     button.className = 'editButton';
     button.innerHTML ='Edit';
-    
+    button.addEventListener("click", function (e) { selectDiv(div.id, button.id); });
+    dContainer.appendChild(button);
   }
-  button.addEventListener("click", function (e) { selectDiv(div.id, button.id); });
-  dContainer.appendChild(button);
 
   
   
