@@ -199,14 +199,7 @@ function selectDiv(divID, buttonID, isPlus, dcID)
     {     
       //-------------------------------this is where the aniamtions has to go
 
-      $('#' + dcID).addClass('animated bounceInLeft');   
-      // wait for animation end
-      $('#' + dcID).one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
-      function(e) {
-        // code to execute after transition ends
-        //$('#' + dcID).remove();
-        $('#' + dcID).removeClass('animated bounceInLeft');  
-      });
+      
       
       addPostIt(false, "", true);
       
