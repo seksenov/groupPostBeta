@@ -199,15 +199,8 @@ function selectDiv(divID, buttonID, isPlus, dcID)
     {     
       //-------------------------------this is where the aniamtions has to go
 
-      $('#' + dcID).addClass('animated rollIn');   
-      // wait for animation end
-      $('#' + dcID).one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
-      function(e) {
-        // code to execute after transition ends
-        //$('#' + dcID).remove();
-        $('#' + dcID).removeClass('animated rollIn');
-        addPostIt(false, "", true);
-      });
+
+      addPostIt(false, "", true);
       
     }
 
@@ -303,6 +296,18 @@ function addPostIt (isInit, postText, plusOne){
     //TODO add oneplue arg
     plus.addEventListener("click", function (e) { selectDiv(div.id, plus.id, true, dcID); });
     dContainer.appendChild(plus);
+
+    //this is whre the animation should go
+    $('#' + dcID).addClass('animated rollIn');   
+      // wait for animation end
+    $('#' + dcID).one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
+    function(e) {
+    // code to execute after transition ends
+    //$('#' + dcID).remove();
+      $('#' + dcID).removeClass('animated rollIn');
+    });
+
+    
   }
   else {
     //Add the edit button
