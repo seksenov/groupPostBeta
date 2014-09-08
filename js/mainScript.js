@@ -163,7 +163,7 @@ function selectDiv(divID, buttonID, isPlus, dcID)
       newButton.id = buttonID;
       newButton.className = 'editButton';
       newButton.innerHTML ='Post';
-      newButton.addEventListener("click", function (e) { selectDiv(div.id, newButton.id, true, dcID); });
+      newButton.addEventListener("click", function (e) { selectDiv(div.id, newButton.id, false, dcID); });
       console.log("This is dcID: " + dcID);
       console.log("This is the id of the container: " + $('#'+ dcID).id);
       $('#'+ dcID).append(newButton);
@@ -199,7 +199,7 @@ function selectDiv(divID, buttonID, isPlus, dcID)
     {     
       //-------------------------------this is where the aniamtions has to go
 
-      
+
       
       addPostIt(false, "", true);
       
