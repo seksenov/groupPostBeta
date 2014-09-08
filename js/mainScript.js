@@ -199,13 +199,13 @@ function selectDiv(divID, buttonID, isPlus, dcID)
     {     
       //-------------------------------this is where the aniamtions has to go
 
-      $('#' + dcID).addClass('animated rillIn');   
+      $('#' + dcID).addClass('animated rollIn');   
       // wait for animation end
       $('#' + dcID).one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
       function(e) {
         // code to execute after transition ends
         //$('#' + dcID).remove();
-        $('#' + dcID).removeClass('animated rillIn');
+        $('#' + dcID).removeClass('animated rollIn');
         addPostIt(false, "", true);
       });
       
