@@ -163,7 +163,7 @@ function selectDiv(divID, buttonID, isPlus, dcID)
       newButton.id = buttonID;
       newButton.className = 'editButton';
       newButton.innerHTML ='Post';
-      newButton.addEventListener("click", function (e) { selectDiv(div.id, newButton.id, false, dcID); });
+      newButton.addEventListener("click", function (e) { selectDiv(div.id, newButton.id, true, dcID); });
       console.log("This is dcID: " + dcID);
       console.log("This is the id of the container: " + $('#'+ dcID).id);
       $('#'+ dcID).append(newButton);
@@ -196,9 +196,19 @@ function selectDiv(divID, buttonID, isPlus, dcID)
     var lastDiv = "div" + (idNum);
     console.log("This is the last div: " + lastDiv);
     if(divID == lastDiv)
-    {
-      //TODO add a new post arg
-      addPostIt(false, "", true);
+    {     
+      //-------------------------------this is where the aniamtions has to go
+
+      $('#' + dcID).addClass('animated rillIn');   
+      // wait for animation end
+      $('#' + dcID).one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
+      function(e) {
+        // code to execute after transition ends
+        //$('#' + dcID).remove();
+        $('#' + dcID).removeClass('animated rillIn');
+        addPostIt(false, "", true);
+      });
+      
     }
 
     //editable.on('input', function() {
