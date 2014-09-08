@@ -61,9 +61,7 @@ window.fbAsyncInit = function() {
 
   FBuid();
 
-  
-
-  };
+};
 
   // Load the SDK asynchronously
   (function(d, s, id) {
@@ -464,6 +462,7 @@ function getPostIts(){
       if(postIts[i].PostItNote == '') {
         //TODO: add args for last post
         addPostIt(true, '', true);
+        console.log("-----YO! in the loop i is #: " + i);
       }
       else {
         addPostIt(true, postIts[i].PostItNote, false);
