@@ -62,11 +62,13 @@ canvas {
     background-color: #FFFF99;
 }
 
+/* url('fonts/post_note-webfont.woff') format('woff'), */
+
 @font-face {
     font-family: 'post_noteregular';
     src: url('fonts/post_note-webfont.eot');
     src: url('fonts/post_note-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/post_note-webfont.woff') format('woff'),
+         
          url('fonts/post_note-webfont.ttf') format('truetype'),
          url('fonts/post_note-webfont.svg#post_noteregular') format('svg');
     font-weight: normal;
