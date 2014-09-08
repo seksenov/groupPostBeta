@@ -459,7 +459,7 @@ function getPostIts(){
       console.log(postIts[i].divnum);
       console.log(postIts[i].uid);
       idNum = postIts[i].divnum;
-      if(postIts[i].PostItNote == '') {
+      if(i == postIts.length-1) {
         //TODO: add args for last post
         addPostIt(true, '', true);
         console.log("-----YO! in the loop i is #: " + i);
