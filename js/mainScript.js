@@ -200,6 +200,15 @@ function selectDiv(divID, buttonID, isPlus, dcID)
 
       
       addPostIt(false, "", true);
+      //this is whre the animation should go
+    $('#' + dcID).addClass('animated rollIn');   
+      // wait for animation end
+    $('#' + dcID).one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
+    function(e) {
+    // code to execute after transition ends
+    //$('#' + dcID).remove();
+      $('#' + dcID).removeClass('animated rollIn');
+    });
       
     }
 
@@ -226,7 +235,7 @@ function deleteDiv(divID, dcID, buttonID) {
       userTable.del(postIts[0]);
      });
 
-      $('#' + dcID).addClass('animated zoomOutLeft');   
+      $('#' + dcID).addClass('animated flipOutX'); //zoomOutLeft
       // wait for animation end
       $('#' + dcID).one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
       function(e) {
