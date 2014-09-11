@@ -201,14 +201,14 @@ function selectDiv(divID, buttonID, isPlus, dcID)
       
       addPostIt(false, "", true);
       //this is whre the animation should go
-    $('#' + dcID).addClass('animated rollIn');   
+    //$('#' + dcID).addClass('animated rollIn');   
       // wait for animation end
-    $('#' + dcID).one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
-    function(e) {
+    //$('#' + dcID).one('webkitAnimationEnd oanimationend msAnimationEnd animationend',   
+    //function(e) {
     // code to execute after transition ends
     //$('#' + dcID).remove();
-      $('#' + dcID).removeClass('animated rollIn');
-    });
+    //  $('#' + dcID).removeClass('animated rollIn');
+    //});
       
     }
 
