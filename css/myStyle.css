@@ -56,6 +56,12 @@
     bottom: 300px;
 }
 
+#fbLogout {
+    position: relative;
+    right: -1500px;
+    bottom: 65px;
+}
+
 .labelClass {
 
     font-size: 35px;
