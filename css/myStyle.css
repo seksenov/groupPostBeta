@@ -24,6 +24,7 @@
     position:relative; 
     right: -255px;
     bottom: 50px;
+    cursor: pointer;
 
 }
 
@@ -33,6 +34,7 @@
     right: 35px;
     bottom: 50px;
     cursor: pointer;
+    background-color: #FF0000;
 }
 
 .plusButton {
