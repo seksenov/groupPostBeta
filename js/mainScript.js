@@ -321,7 +321,7 @@ function addPostIt (isInit, postText, plusOne){
     //Add the edit button
     var button=document.createElement('a');
     button.id = "editB" + idNum;
-    button.className = 'editButton fa fa-pencil-square-o';
+    button.className = 'editButton fa fa-pencil-square-o fa-2';
     //button.innerHTML ='Edit';
     //TODO add oneplus arg
     button.addEventListener("click", function (e) { selectDiv(div.id, button.id, false, dcID); });
@@ -330,7 +330,7 @@ function addPostIt (isInit, postText, plusOne){
     //Add the delete button
     var dButton=document.createElement('a');
     dButton.id = "deleteB" + idNum;
-    dButton.className = 'deleteButton fa fa-times';
+    dButton.className = 'deleteButton fa fa-times fa-2';
     //dButton.innerHTML ='';
     dButton.addEventListener("click", function (e) { deleteDiv(div.id, dcID, dButton.id); });
     dContainer.appendChild(dButton);
