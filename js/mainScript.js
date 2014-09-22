@@ -319,10 +319,10 @@ function addPostIt (isInit, postText, plusOne){
   }
   else {
     //Add the edit button
-    var button=document.createElement('button');
+    var button=document.createElement('a');
     button.id = "editB" + idNum;
-    button.className = 'editButton';
-    button.innerHTML ='Edit';
+    button.className = 'editButton fa fa-pencil-square-o';
+    //button.innerHTML ='Edit';
     //TODO add oneplus arg
     button.addEventListener("click", function (e) { selectDiv(div.id, button.id, false, dcID); });
     dContainer.appendChild(button);
