@@ -170,7 +170,7 @@ function selectDiv(divID, buttonID, isPlus, dcID)
       var dButton=document.createElement('button');
       dButton.id = "deleteB" + buttonID;
       dButton.className = 'deleteButton';
-      dButton.innerHTML ='Delete';
+      dButton.innerHTML ='<i class="fa fa-times">';
       dButton.addEventListener("click", function (e) { deleteDiv(div.id, dcID, dButton.id); });
       $('#'+ dcID).append(dButton);
 
