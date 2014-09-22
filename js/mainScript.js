@@ -159,11 +159,11 @@ function selectDiv(divID, buttonID, isPlus, dcID)
       //Add a Post button
       var newButton=document.createElement('a');
       newButton.id = buttonID;
-      newButton.className = 'editButton fa fa-pencil-square-o';
+      newButton.className = 'editButton fa fa-check';
       //newButton.innerHTML ='Post';
       newButton.addEventListener("click", function (e) { selectDiv(div.id, newButton.id, false, dcID); });
-      console.log("This is dcID: " + dcID);
-      console.log("This is the id of the container: " + $('#'+ dcID).id);
+      //console.log("This is dcID: " + dcID);
+      //console.log("This is the id of the container: " + $('#'+ dcID).id);
       $('#'+ dcID).append(newButton);
       
       //Add the delete button
@@ -218,7 +218,7 @@ function selectDiv(divID, buttonID, isPlus, dcID)
     filter_newlines(divID);
     div.style.backgroundColor = '#FFFF99';
     div.contentEditable = 'false'; 
-    button.innerHTML = 'Edit';
+    button.className = 'editButton fa fa-pencil-square-o';
   }
 }
 
