@@ -57,9 +57,10 @@
 }
 
 #fbLogout {
-    position: relative;
-    right: -1500px;
-    bottom: 65px;
+    position: fixed;
+    right: 10px;
+    top: 13px;
+    cursor: pointer;
 }
 
 .labelClass {
