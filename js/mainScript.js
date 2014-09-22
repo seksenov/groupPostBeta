@@ -159,7 +159,7 @@ function selectDiv(divID, buttonID, isPlus, dcID)
       //Add a Post button
       var newButton=document.createElement('a');
       newButton.id = buttonID;
-      newButton.className = 'editButton fa fa-check';
+      newButton.className = 'postButton fa fa-check';
       //newButton.innerHTML ='Post';
       newButton.addEventListener("click", function (e) { selectDiv(div.id, newButton.id, false, dcID); });
       //console.log("This is dcID: " + dcID);
@@ -177,7 +177,7 @@ function selectDiv(divID, buttonID, isPlus, dcID)
     }
     else {
       //Add the Post button
-      button.className = 'editButton fa fa-check';
+      button.className = 'postButton fa fa-check';
     }
 
   }

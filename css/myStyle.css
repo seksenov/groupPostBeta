@@ -35,10 +35,22 @@
     right: -275px;
     bottom: 50px;
     cursor: pointer;
+    color: black;
+    font-size: 38px !important;
+
+}
+
+.postButton {
+
+    position:relative; 
+    right: -275px;
+    bottom: 50px;
+    cursor: pointer;
     color: #009900;
     font-size: 38px !important;
 
 }
+
 
 .deleteButton {
 
@@ -64,7 +76,7 @@
     color: white;
     font-family: 'post_noteregular';
     font-size: 28px;
-    
+
 }
 
 .labelClass {
