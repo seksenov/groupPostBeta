@@ -328,7 +328,7 @@ function addPostIt (isInit, postText, plusOne){
     dContainer.appendChild(button);
 
     //Add the delete button
-    var dButton=document.createElement('input');
+    var dButton=document.createElement('a');
     dButton.id = "deleteB" + idNum;
     dButton.className = 'deleteButton fa fa-times';
     //dButton.innerHTML ='';
