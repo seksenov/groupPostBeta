@@ -170,7 +170,7 @@ function selectDiv(divID, buttonID, isPlus, dcID)
       var dButton=document.createElement('button');
       dButton.id = "deleteB" + buttonID;
       dButton.className = 'deleteButton';
-      dButton.innerHTML ='<i class="fa fa-times">';
+      dButton.innerHTML ='Delete';
       dButton.addEventListener("click", function (e) { deleteDiv(div.id, dcID, dButton.id); });
       $('#'+ dcID).append(dButton);
 
@@ -328,10 +328,10 @@ function addPostIt (isInit, postText, plusOne){
     dContainer.appendChild(button);
 
     //Add the delete button
-    var dButton=document.createElement('button');
+    var dButton=document.createElement('i');
     dButton.id = "deleteB" + idNum;
-    dButton.className = 'deleteButton';
-    dButton.innerHTML ='Delete';
+    dButton.className = 'deleteButton fa fa-times';
+    //dButton.innerHTML ='';
     dButton.addEventListener("click", function (e) { deleteDiv(div.id, dcID, dButton.id); });
     dContainer.appendChild(dButton);
   }
