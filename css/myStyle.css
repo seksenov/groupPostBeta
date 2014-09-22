@@ -25,7 +25,8 @@
     right: -255px;
     bottom: 50px;
     cursor: pointer;
-    
+    font-size: 38px !important;
+
 }
 
 .deleteButton {

@@ -157,27 +157,27 @@ function selectDiv(divID, buttonID, isPlus, dcID)
 
       $('#' + buttonID).remove();
       //Add a Post button
-      var newButton=document.createElement('button');
+      var newButton=document.createElement('a');
       newButton.id = buttonID;
-      newButton.className = 'editButton';
-      newButton.innerHTML ='Post';
+      newButton.className = 'editButton fa fa-pencil-square-o';
+      //newButton.innerHTML ='Post';
       newButton.addEventListener("click", function (e) { selectDiv(div.id, newButton.id, false, dcID); });
       console.log("This is dcID: " + dcID);
       console.log("This is the id of the container: " + $('#'+ dcID).id);
       $('#'+ dcID).append(newButton);
       
       //Add the delete button
-      var dButton=document.createElement('button');
+      var dButton=document.createElement('a');
       dButton.id = "deleteB" + buttonID;
-      dButton.className = 'deleteButton';
-      dButton.innerHTML ='Delete';
+      dButton.className = 'deleteButton fa fa-times';
+      //dButton.innerHTML ='Delete';
       dButton.addEventListener("click", function (e) { deleteDiv(div.id, dcID, dButton.id); });
       $('#'+ dcID).append(dButton);
 
     }
     else {
       //Add the Post button
-      button.innerHTML = 'Post';
+      button.className = 'editButton fa fa-check';
     }
 
   }
@@ -321,7 +321,7 @@ function addPostIt (isInit, postText, plusOne){
     //Add the edit button
     var button=document.createElement('a');
     button.id = "editB" + idNum;
-    button.className = 'editButton fa fa-pencil-square-o fa-2';
+    button.className = 'editButton fa fa-pencil-square-o';
     //button.innerHTML ='Edit';
     //TODO add oneplus arg
     button.addEventListener("click", function (e) { selectDiv(div.id, button.id, false, dcID); });
@@ -330,7 +330,7 @@ function addPostIt (isInit, postText, plusOne){
     //Add the delete button
     var dButton=document.createElement('a');
     dButton.id = "deleteB" + idNum;
-    dButton.className = 'deleteButton fa fa-times fa-2';
+    dButton.className = 'deleteButton fa fa-times';
     //dButton.innerHTML ='';
     dButton.addEventListener("click", function (e) { deleteDiv(div.id, dcID, dButton.id); });
     dContainer.appendChild(dButton);
