@@ -61,6 +61,9 @@
     right: 10px;
     top: 13px;
     cursor: pointer;
+    color: white;
+    font-family: 'post_noteregular';
+    font-size: 40px;
 }
 
 .labelClass {
