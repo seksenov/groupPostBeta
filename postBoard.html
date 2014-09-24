@@ -17,19 +17,15 @@
   <body>
 
     <div ng-controller="PostItController"> <!-- ng-controller="PostItController"> -->
-
-
-   
-
       <div class='navBar'> 
-        <h1>Group Post Beta</h1>
+        <p class='titleText'>Group Post Beta</p>
         <div class="input-group">
           <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
           <input class="form-control" type="search" placeholder="Type to search...">
         </div>
         <a id="fbLogout" onClick="FBLogout();"><i class="fa fa-power-off"></i> Logout</a>
       </div>
-      <div class="container">
+      <div class="myContainer">
         <div class="row row-centered" id="postItNotes">
           <!-- This is where all the post its go -->
         </div>

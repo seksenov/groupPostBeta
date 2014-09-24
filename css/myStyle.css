@@ -19,6 +19,13 @@
     margin-top: 25px;
 }
 
+.titleText {
+    font-family: "post_noteregular";
+    font-weight: 600;
+    font-size: 36px;
+    text-align: left;
+}
+
 .navBar {
 
     position: fixed;
@@ -175,7 +182,7 @@ h1 {
     text-align:center;
     font-family: 'post_noteregular';
 }
-.container{
+.myContainer{
     max-width:99%;
     margin-top: 60px;
 }
