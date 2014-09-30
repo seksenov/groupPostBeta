@@ -350,7 +350,7 @@ function addPostIt (isInit, postText, plusOne){
 }
 
 function printIds () {
-  for (int i = 0; i < notesArray.length; i++) {
+  for (i = 0; i < notesArray.length; i++) {
     console.log(notesArray[i]);
   }
 }
