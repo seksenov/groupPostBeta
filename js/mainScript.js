@@ -5,7 +5,7 @@ var idNum;
 
 var userID;
 
-var notesArray;
+var notesArray = [];
 
 app.controller('PostItController', function($scope) {
   
@@ -288,7 +288,7 @@ function addPostIt (isInit, postText, plusOne){
   div.contentEditable = 'false';
 
   //add the div ID to the array of divs
-  //notesArray.push(div.id);
+  notesArray.push(div.id);
 
   //Log the id of the newly created div to the console
   console.log("Here logging the div ID: " + div.id);
