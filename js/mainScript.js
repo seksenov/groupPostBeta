@@ -184,6 +184,9 @@ function selectDiv(divID, buttonID, isPlus, dcID)
       button.className = 'postButton fa fa-check';
     }
 
+    printIds();
+
+
   }
   //This is what gets executed when the post button is hit
   else{
@@ -229,8 +232,7 @@ function selectDiv(divID, buttonID, isPlus, dcID)
 function deleteDiv(divID, dcID, buttonID) {
   console.log("deleting div");
 
-  printIds();
-
+  
   var lastDiv = "div" + (idNum);
   if(divID != lastDiv)
   {
@@ -352,7 +354,7 @@ function addPostIt (isInit, postText, plusOne){
 function printIds () {
   for (var i = 0; i < notesArray.length; i++) {
     console.log(notesArray[i]);
-    document.getElementById('notesArray[i]').style.backgroundColor = 'blue';
+     document.getElementById('notesArray[i]').style.backgroundColor = 'blue';
   }
 }
 
