@@ -288,7 +288,7 @@ function addPostIt (isInit, postText, plusOne){
   div.contentEditable = 'false';
 
   //add the div ID to the array of divs
-  notesArray.push(div.id);
+  //notesArray.push(div.id);
 
   //Log the id of the newly created div to the console
   console.log("Here logging the div ID: " + div.id);
@@ -350,7 +350,7 @@ function addPostIt (isInit, postText, plusOne){
 }
 
 function printIds () {
-  for (i = 0; i < notesArray.length; i++) {
+  for (var i = 0; i < notesArray.length; i++) {
     console.log(notesArray[i]);
   }
 }
@@ -480,9 +480,10 @@ function getPostIts(){
     console.log("THis is what the first post it says: " + postIts[0].PostItNote);
     
     for (var i = 0; i < postIts.length; i++) {
-      console.log(postIts[i].PostItNote);
-      console.log(postIts[i].divnum);
-      console.log(postIts[i].uid);
+      console.log("here in the loop");
+      //console.log(postIts[i].PostItNote);
+      //console.log(postIts[i].divnum);
+      //console.log(postIts[i].uid);
       idNum = postIts[i].divnum;
       if(i == postIts.length-1) {
         //TODO: add args for last post
