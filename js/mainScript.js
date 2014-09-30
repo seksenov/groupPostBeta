@@ -5,6 +5,8 @@ var idNum;
 
 var userID;
 
+var notesArray;
+
 app.controller('PostItController', function($scope) {
   
 });
@@ -147,6 +149,8 @@ function selectDiv(divID, buttonID, isPlus, dcID)
   console.log(div.contentEditable);
   //Set the div to editable
   if (div.contentEditable === 'false'){
+    //This is where the color is changed
+    //can all divs change color at the same time
     div.style.backgroundColor = '#FFFF00';
     div.contentEditable = 'true';
     cursorManager.setEndOfContenteditable(div);
@@ -225,6 +229,8 @@ function selectDiv(divID, buttonID, isPlus, dcID)
 function deleteDiv(divID, dcID, buttonID) {
   console.log("deleting div");
 
+  printIds();
+
   var lastDiv = "div" + (idNum);
   if(divID != lastDiv)
   {
@@ -280,6 +286,9 @@ function addPostIt (isInit, postText, plusOne){
   div.id = "div" + idNum;
   div.className = "col-centered col-fixed postIt";
   div.contentEditable = 'false';
+
+  //add the div ID to the array of divs
+  notesArray.push(div.id);
 
   //Log the id of the newly created div to the console
   console.log("Here logging the div ID: " + div.id);
@@ -338,6 +347,12 @@ function addPostIt (isInit, postText, plusOne){
 
   //Clear the value of the input field
   //document.getElementById("someInput").value = '';
+}
+
+function printIds () {
+  for (int i = 0; i < notesArray.length; i++) {
+    console.log(notesArray[i]);
+  }
 }
 
 function addItem(isInit, postText)

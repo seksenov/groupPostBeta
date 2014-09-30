@@ -137,7 +137,8 @@ canvas {
     vertical-align:text-top;
     font-size: 45px;
     word-wrap: break-word;
-    padding: 7px;
+    padding-left: 10px;
+    padding-right: 5px;
     
 }
 
