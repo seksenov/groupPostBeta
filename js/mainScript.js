@@ -183,10 +183,6 @@ function selectDiv(divID, buttonID, isPlus, dcID)
       //Add the Post button
       button.className = 'postButton fa fa-check';
     }
-
-    printIds();
-
-
   }
   //This is what gets executed when the post button is hit
   else{
@@ -351,11 +347,11 @@ function addPostIt (isInit, postText, plusOne){
   //document.getElementById("someInput").value = '';
 }
 
-function printIds () {
+function cahngeColor () {
   for (var i = 0; i < notesArray.length; i++) {
     console.log(notesArray[i]);
      var div = document.getElementById(notesArray[i]);
-     div.style.backgroundColor = 'blue';
+     div.style.backgroundColor = '#33CCFF';
   }
 }
 
