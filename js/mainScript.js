@@ -354,7 +354,7 @@ function addPostIt (isInit, postText, plusOne){
 function printIds () {
   for (var i = 0; i < notesArray.length; i++) {
     console.log(notesArray[i]);
-     var div = document.getElementById('notesArray[i]');
+     var div = document.getElementById(notesArray[i]);
      div.style.backgroundColor = 'blue';
   }
 }
