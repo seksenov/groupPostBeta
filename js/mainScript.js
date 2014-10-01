@@ -347,11 +347,11 @@ function addPostIt (isInit, postText, plusOne){
   //document.getElementById("someInput").value = '';
 }
 
-function cahngeColor () {
+function changeColor (color) {
   for (var i = 0; i < notesArray.length; i++) {
     console.log(notesArray[i]);
      var div = document.getElementById(notesArray[i]);
-     div.style.backgroundColor = '#33CCFF';
+     div.style.backgroundColor = color;
   }
 }
 
