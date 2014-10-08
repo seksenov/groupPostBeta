@@ -11,7 +11,6 @@ app.controller('PostItController', function($scope) {
   
 });
 
-
 var client = new WindowsAzure.MobileServiceClient(
 "https://grouppostbetadb.azure-mobile.net/",
 "hyCoAnJjoajhcntTKrzmnBPJaxKCiw45"
@@ -19,8 +18,6 @@ var client = new WindowsAzure.MobileServiceClient(
 
 var userTable=null;
 userTable=client.getTable("userTable");
-
-
 
 //do the FB init stuff
 //function checkLoginState() {
