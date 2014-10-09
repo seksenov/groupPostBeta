@@ -94,6 +94,13 @@
     });
   }
   */
+
+  function loginToFB() {
+    window.location.href = "https://www.facebook.com/dialog/oauth?
+    client_id={821945741172950}
+    &redirect_uri={https://www.facebook.com/connect/login_success.html}"
+  }
+
 </script>
 
 <!--
@@ -102,11 +109,9 @@
   the FB.login() function when clicked.
 -->
 
-<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
+<button onclick="loginToFB()">LoginToFB</button>>
 
-<div id="status">
-</div>
+
 
 </body>
 </html>
