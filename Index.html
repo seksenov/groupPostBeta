@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,21 @@
   function login() {
     window.location.href = "https://www.facebook.com/dialog/oauth?client_id=821945741172950&redirect_uri=https://www.facebook.com/connect/login_success.html"
   }
+  
+  //This is the "Offline page" service worker
+
+//Add this below content to your HTML page, or add the js file to your page at the very top to register sercie worker
+if (navigator.serviceWorker.controller) {
+  console.log('[Manifoldjs] active service worker found, no need to register')
+} else {
+  //Register the ServiceWorker
+  navigator.serviceWorker.register('manifoldjs-sw.js', {
+    scope: './'
+  }).then(function(reg) {
+    console.log('Service worker has been registered for scope:'+ reg.scope);
+  });
+}
+
 
 </script>
 
